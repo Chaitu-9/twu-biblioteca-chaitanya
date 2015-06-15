@@ -5,9 +5,10 @@ import java.util.ArrayList;
 
 public class Library {
 
-    ArrayList<Book> booksList = new ArrayList<Book>();
+    ArrayList<Book> booksList;
 
-    public Library(){
+    public Library(ArrayList booksList){
+        this.booksList = booksList;
     }
 
     public ArrayList<Book> availableListOfBooks() {
