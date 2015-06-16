@@ -15,6 +15,6 @@ public class Options {
         System.out.print(Messages.WELCOME_MESSAGE);
     }
     public void displayOptions(){
-        System.out.print("1. " + Messages.LIST_BOOKS + "2. " + Messages.EXIT +"\n");
+        System.out.print("1. " + Messages.LIST_BOOKS + "\n" + "2. "+ Messages.CHECKOUT +"\n" +"3. " + Messages.EXIT +"\n");
     }
 }
