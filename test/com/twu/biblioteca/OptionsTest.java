@@ -37,7 +37,7 @@ public class OptionsTest {
         Library library = new Library(booksList,null, null);
         Options options = new Options(library);
 
-        String actualMessage = "1. " + Messages.LIST_BOOKS + "\n" +
+        String actualMessage = "\n1. " + Messages.LIST_BOOKS + "\n" +
                 "2. "+ Messages.CHECKOUT +"\n" +
                 "3. " + Messages.RETURN +"\n"+
                 "4. " + Messages.EXIT + "\n";

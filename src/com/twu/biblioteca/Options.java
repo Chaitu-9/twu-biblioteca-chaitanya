@@ -11,10 +11,10 @@ public class Options {
         displayOptions();
     }
     public void welcome(){
-        System.out.println(Messages.WELCOME_MESSAGE);
+        System.out.print(Messages.WELCOME_MESSAGE);
     }
     public void displayOptions(){
-        System.out.print("1. " + Messages.LIST_BOOKS + "\n" +
+        System.out.print("\n1. " + Messages.LIST_BOOKS + "\n" +
                 "2. "+ Messages.CHECKOUT +"\n" +
                 "3. " + Messages.RETURN +"\n"+
                 "4. " + Messages.EXIT + "\n");
