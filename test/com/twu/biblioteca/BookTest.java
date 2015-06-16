@@ -3,7 +3,9 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.Book;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.*;
 
 public class BookTest {
@@ -17,4 +19,4 @@ public class BookTest {
         assertThat(actualString,is(book.toString()));
     }
 
-}
+    }

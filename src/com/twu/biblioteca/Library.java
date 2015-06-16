@@ -17,10 +17,6 @@ public class Library {
         this.bibliotecaView = bibliotecaView;
     }
 
-    public ArrayList<Book> availableListOfBooks() {
-        return availableBooksList;
-    }
-
     public void displayAvailableBooks(){
         for (int x = 0; x < availableBooksList.size(); x++)
             bibliotecaView.display((x + 1 + " " + availableBooksList.get(x)));
