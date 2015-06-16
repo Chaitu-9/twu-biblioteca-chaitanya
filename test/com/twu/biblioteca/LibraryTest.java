@@ -1,7 +1,12 @@
 package com.twu.biblioteca;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -11,10 +16,18 @@ import static org.junit.Assert.assertThat;
 
 public class LibraryTest {
 
+
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @Before
+    public void setUp() {
+        System.setOut(new PrintStream(outContent));
+    }
+
     @Test
     public void ifNoBookIsAvailableInLibrary() {
         ArrayList<Book> booksList = new ArrayList<Book>();
-        Library library = new Library(booksList, null);
+        Library library = new Library(booksList,null, null);
 
         int actual = library.availableBooksCount();
 
@@ -27,7 +40,7 @@ public class LibraryTest {
         booksList.add(new Book("Harry Potter", "J.K.Rowling", "1990"));
         booksList.add(new Book("The Hobbit", "Tolkein", "2001"));
         booksList.add(new Book("Hound of Baskervilles", "Doyle", "1902"));
-        Library library = new Library(booksList, null);
+        Library library = new Library(booksList,null, null);
 
         ArrayList<Book> actualBooksList = library.availableListOfBooks();
         ArrayList<Book> expectedBooksList = new ArrayList<Book>();
@@ -37,4 +50,29 @@ public class LibraryTest {
 
         assertThat(actualBooksList, is(expectedBooksList));
     }
+
+    @Test
+    public void shouldcheckOutParticularBook(){
+        ArrayList<Book> bookList = new ArrayList<Book>();
+        ArrayList<Book> checkedoutBookList = new ArrayList<Book>();
+        bookList.add(new Book("Harry Potter", "J.K.Rowling", "1990"));
+        bookList.add(new Book("The Hobbit", "Tolkein", "2001"));
+        bookList.add(new Book("Hound of Baskervilles", "Doyle", "1902"));
+        BibliotecaView view = new BibliotecaView(null);
+        Library library = new Library(bookList,checkedoutBookList,view);
+
+        library.checkOut("Harry Potter");
+
+        library.displayAvailableBooks();
+
+        assertThat(outContent.toString(),is("1 Book Name : The Hobbit Author : Tolkein yearOfPublication : 2001\n2 Book Name : Hound of Baskervilles Author : Doyle yearOfPublication : 1902\n"));
+    }
+
+
+
+    @After
+    public void cleanUpStreams() {
+        System.setOut(null);
+    }
+
 }

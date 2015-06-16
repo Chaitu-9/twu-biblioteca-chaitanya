@@ -21,7 +21,7 @@ public class OptionsTest {
     @Test
     public void shouldPrintWelcomeMessage(){
         ArrayList<Book> booksList = new ArrayList<Book>();
-        Library library = new Library(booksList, null);
+        Library library = new Library(booksList,null, null);
         Options options = new Options(library);
 
         String actualMessage = Messages.WELCOME_MESSAGE;
