@@ -7,10 +7,14 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.startsWith;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class LibraryTest {
 
@@ -30,6 +34,20 @@ public class LibraryTest {
         int actual = library.availableBooksCount();
 
         assertThat(actual, is(equalTo(0)));
+    }
+    @Test
+    public void shouldDisplayAvailableInLibrary() {
+        ArrayList<Book> booksList = new ArrayList<Book>();
+        ArrayList<Book> checkedoutBooksList = new ArrayList<Book>();
+        BibliotecaView bibliotecaView = new BibliotecaView(null);
+        booksList.add(new Book("Harry Potter", "J.K.Rowling", "1990"));
+        booksList.add(new Book("The Hobbit", "Tolkein", "2001"));
+        booksList.add(new Book("Hound of Baskervilles", "Doyle", "1902"));
+        Library library = new Library(booksList,checkedoutBooksList,bibliotecaView);
+
+        library.displayAvailableBooks();
+
+        assertThat(outContent.toString(), is(equalTo("1 Book Name : Harry Potter Author : J.K.Rowling yearOfPublication : 1990\n2 Book Name : The Hobbit Author : Tolkein yearOfPublication : 2001\n3 Book Name : Hound of Baskervilles Author : Doyle yearOfPublication : 1902\n")));
     }
 
     @Test
