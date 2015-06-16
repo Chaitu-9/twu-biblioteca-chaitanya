@@ -97,7 +97,21 @@ public class LibraryTest {
         assertThat(outContent.toString(),is("Thank you for returning the book.\n"));
     }
 
-    
+    @Test
+    public void shouldreturnErrorMessageIfParticularBookIsNotValid(){
+        ArrayList<Book> bookList = new ArrayList<Book>();
+        bookList.add(new Book("The Hobbit", "Tolkein", "2001"));
+        bookList.add(new Book("Hound of Baskervilles", "Doyle", "1902"));
+        ArrayList<Book> checkedoutBookList = new ArrayList<Book>();
+        checkedoutBookList.add(new Book("Harry Potter", "J.K.Rowling", "1990"));
+        BibliotecaView view = new BibliotecaView(null);
+        Library library = new Library(bookList,checkedoutBookList,view);
+
+        library.returnBook("Prince of Persia");
+
+
+        assertThat(outContent.toString(),is("That is not a valid book to return.\n"));
+    }
 
     @After
     public void cleanUpStreams() {
