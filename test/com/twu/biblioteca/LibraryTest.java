@@ -60,14 +60,34 @@ public class LibraryTest {
         BibliotecaView view = new BibliotecaView(null);
         Library library = new Library(bookList,checkedoutBookList,view);
 
-        library.checkOut("Harry Potter");
+        library.checkOutBook("Harry Potter");
 
         library.displayAvailableBooks();
 
-        assertThat(outContent.toString(),is("1 Book Name : The Hobbit Author : Tolkein yearOfPublication : 2001\n2 Book Name : Hound of Baskervilles Author : Doyle yearOfPublication : 1902\n"));
+        assertThat(outContent.toString(),is("Thank you! Enjoy the book\n" +
+                "1 Book Name : The Hobbit Author : Tolkein yearOfPublication : 2001\n" +
+                "2 Book Name : Hound of Baskervilles Author : Doyle yearOfPublication : 1902\n"));
     }
 
+    @Test
+    public void shouldreturnParticularBook(){
+        ArrayList<Book> bookList = new ArrayList<Book>();
+        bookList.add(new Book("The Hobbit", "Tolkein", "2001"));
+        bookList.add(new Book("Hound of Baskervilles", "Doyle", "1902"));
+        ArrayList<Book> checkedoutBookList = new ArrayList<Book>();
+        checkedoutBookList.add(new Book("Harry Potter", "J.K.Rowling", "1990"));
+        BibliotecaView view = new BibliotecaView(null);
+        Library library = new Library(bookList,checkedoutBookList,view);
 
+        library.returnBook("Harry Potter");
+
+        library.displayAvailableBooks();
+
+        assertThat(outContent.toString(),is("Thank you for returning the book.\n" +
+                "1 Book Name : The Hobbit Author : Tolkein yearOfPublication : 2001\n" +
+                "2 Book Name : Hound of Baskervilles Author : Doyle yearOfPublication : 1902\n" +
+                "3 Book Name : Harry Potter Author : J.K.Rowling yearOfPublication : 1990\n"));
+    }
 
     @After
     public void cleanUpStreams() {

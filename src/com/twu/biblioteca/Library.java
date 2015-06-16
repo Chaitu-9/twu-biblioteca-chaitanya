@@ -31,7 +31,7 @@ public class Library {
     }
 
 
-    public boolean checkOut(String bookName) {
+    public boolean checkOutBook(String bookName) {
         for (int x = 0; x < availableBooksList.size(); x++)
             if (availableBooksList.get(x).hashCode() == bookName.hashCode()) {
                 Book book = availableBooksList.remove(x);
@@ -40,6 +40,18 @@ public class Library {
                 return true;
             }
         bibliotecaView.display(Messages.UNSUCCESSFUL_CHECKOUT);
+        return false;
+    }
+
+    public boolean returnBook(String bookName) {
+        for (int x = 0; x < checkedoutBooksList.size(); x++)
+            if (checkedoutBooksList.get(x).hashCode() == bookName.hashCode()) {
+                Book book = checkedoutBooksList.remove(x);
+                availableBooksList.add(book);
+                bibliotecaView.display(Messages.SUCCESSFUL_RETURN);
+                return true;
+            }
+        bibliotecaView.display(Messages.UNSUCCESSFUL_RETURN);
         return false;
     }
 }

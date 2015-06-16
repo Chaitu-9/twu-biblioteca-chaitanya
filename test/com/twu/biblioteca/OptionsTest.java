@@ -31,6 +31,22 @@ public class OptionsTest {
         assertThat(actualMessage, is(expectedMessage));
     }
 
+    @Test
+    public void shouldPrintAvailableOptions(){
+        ArrayList<Book> booksList = new ArrayList<Book>();
+        Library library = new Library(booksList,null, null);
+        Options options = new Options(library);
+
+        String actualMessage = "1. " + Messages.LIST_BOOKS + "\n" +
+                "2. "+ Messages.CHECKOUT +"\n" +
+                "3. " + Messages.RETURN +"\n"+
+                "4. " + Messages.EXIT + "\n";
+        options.displayOptions();
+        String expectedMessage = outContent.toString();
+
+        assertThat(actualMessage, is(expectedMessage));
+    }
+
     @After
     public void cleanUp(){
         System.setOut(null);

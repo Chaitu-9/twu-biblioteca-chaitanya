@@ -18,6 +18,7 @@ public class BibliotecaApp {
         options.start();
 
         int option;
+        String bookName;
 
         do {
             option = bibliotecaView.getInput();
@@ -27,10 +28,15 @@ public class BibliotecaApp {
                 break;
             case 2:
                 input.nextLine();
-                String bookName = input.nextLine();
-                library.checkOut(bookName);
+                bookName = input.nextLine();
+                library.checkOutBook(bookName);
                 break;
             case 3:
+                input.nextLine();
+                bookName = input.nextLine();
+                library.returnBook(bookName);
+                break;
+            case 4:
                 System.exit(0);
                 break;
             default:
