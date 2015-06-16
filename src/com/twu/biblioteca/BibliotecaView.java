@@ -13,4 +13,8 @@ public class BibliotecaView {
     public int getInput(){
        return input.nextInt();
     }
+
+    public void display(String message){
+        System.out.println(message);
+    }
 }

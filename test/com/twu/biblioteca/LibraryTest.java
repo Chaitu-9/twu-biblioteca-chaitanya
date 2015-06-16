@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.Book;
-import com.twu.biblioteca.Library;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -16,7 +14,7 @@ public class LibraryTest {
     @Test
     public void ifNoBookIsAvailableInLibrary() {
         ArrayList<Book> booksList = new ArrayList<Book>();
-        Library library = new Library(booksList);
+        Library library = new Library(booksList, null);
 
         int actual = library.availableBooksCount();
 
@@ -29,7 +27,7 @@ public class LibraryTest {
         booksList.add(new Book("Harry Potter", "J.K.Rowling", "1990"));
         booksList.add(new Book("The Hobbit", "Tolkein", "2001"));
         booksList.add(new Book("Hound of Baskervilles", "Doyle", "1902"));
-        Library library = new Library(booksList);
+        Library library = new Library(booksList, null);
 
         ArrayList<Book> actualBooksList = library.availableListOfBooks();
         ArrayList<Book> expectedBooksList = new ArrayList<Book>();
