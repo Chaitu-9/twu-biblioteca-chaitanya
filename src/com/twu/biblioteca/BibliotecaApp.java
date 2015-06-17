@@ -11,11 +11,11 @@ public class BibliotecaApp {
         availableBooksList.add(new Book("Harry Potter", "J.K.Rowling", "1990"));
         availableBooksList.add(new Book("The Hobbit", "Tolkein", "2001"));
         availableBooksList.add(new Book("Hound of Baskervilles", "Doyle", "1902"));
-        
+
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = new Library(availableBooksList, checkedoutBooksList, bibliotecaView);
 
-        Options options = new Options(library, bibliotecaView);
+        Options options = new Options(library, bibliotecaView, null);
         options.start();
         options.selectOption();
     }

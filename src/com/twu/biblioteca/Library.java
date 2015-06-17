@@ -26,17 +26,12 @@ public class Library {
         return availableBooksList.size();
     }
 
+    public void addBook(ArrayList<Book> bookList, Book book ){
+        bookList.add(book);
+    }
 
-    public boolean checkOutBook(String bookName) {
-        for (int x = 0; x < availableBooksList.size(); x++)
-            if (availableBooksList.get(x).hashCode() == bookName.hashCode()) {
-                Book book = availableBooksList.remove(x);
-                checkedoutBooksList.add(book);
-                bibliotecaView.display(Messages.SUCCESSFUL_CHECKOUT);
-                return true;
-            }
-        bibliotecaView.display(Messages.UNSUCCESSFUL_CHECKOUT);
-        return false;
+    public Book removeBook(ArrayList<Book> bookList, int bookNumber ){
+        return bookList.remove(bookNumber);
     }
 
     public boolean returnBook(String bookName) {
@@ -50,4 +45,6 @@ public class Library {
         bibliotecaView.display(Messages.UNSUCCESSFUL_RETURN);
         return false;
     }
+
+
 }

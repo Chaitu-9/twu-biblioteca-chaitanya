@@ -7,10 +7,12 @@ public class Options {
     Library library;
     Scanner input;
     private BibliotecaView bibliotecaView;
+    private Librarian librarian;
 
-    public Options(Library library, BibliotecaView bibliotecaView){
+    public Options(Library library, BibliotecaView bibliotecaView, Librarian librarian){
         this.library = library;
         this.bibliotecaView = bibliotecaView;
+        this.librarian = librarian;
     }
 
     public void start(){
@@ -41,7 +43,7 @@ public class Options {
                 case 2:
                     bibliotecaView.getStringInput();
                     bookName = bibliotecaView.getStringInput();
-                    library.checkOutBook(bookName);
+                    librarian.checkOutBook(bookName);
                     break;
                 case 3:
                     bibliotecaView.getStringInput();

@@ -32,7 +32,7 @@ public class OptionsTest {
     @Test
     public void shouldcallWelcomeAndDisplayOptionsMethod(){
         Library library = new Library(null,null, null);
-        Options options = new Options(library, null);
+        Options options = new Options(library, null, null);
 
         options.start();
 
@@ -49,7 +49,7 @@ public class OptionsTest {
     public void shouldPrintWelcomeMessage(){
         ArrayList<Book> booksList = new ArrayList<Book>();
         Library library = new Library(booksList,null, null);
-        Options options = new Options(library, null);
+        Options options = new Options(library, null, null);
 
         String actualMessage = Messages.WELCOME_MESSAGE;
         options.welcome();
@@ -62,7 +62,7 @@ public class OptionsTest {
     public void shouldPrintAvailableOptions(){
         ArrayList<Book> booksList = new ArrayList<Book>();
         Library library = new Library(booksList,null, null);
-        Options options = new Options(library, null);
+        Options options = new Options(library, null, null);
 
         String actualMessage = "\n1. " + Messages.LIST_BOOKS + "\n" +
                 "2. "+ Messages.CHECKOUT +"\n" +
@@ -82,7 +82,7 @@ public class OptionsTest {
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = mock(Library.class);
-        Options options = new Options(library,bibliotecaView);
+        Options options = new Options(library,bibliotecaView, null);
 
         options.selectOption();
 
@@ -99,12 +99,13 @@ public class OptionsTest {
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = mock(Library.class);
-        Options options = new Options(library,bibliotecaView);
+        Librarian librarian =new Librarian(null,null,null,null);
+        Options options = new Options(library,bibliotecaView, null);
 
         options.selectOption();
         String bookName = "Harry Potter";
 
-        verify(library,times(1)).checkOutBook(bookName);
+        verify(librarian,times(1)).checkOutBook(bookName);
     }
 
     @Test
@@ -115,7 +116,7 @@ public class OptionsTest {
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = mock(Library.class);
-        Options options = new Options(library,bibliotecaView);
+        Options options = new Options(library,bibliotecaView, null);
 
         options.selectOption();
         String bookName = "Harry Potter";
@@ -130,7 +131,7 @@ public class OptionsTest {
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = mock(Library.class);
-        Options options = new Options(library,bibliotecaView);
+        Options options = new Options(library,bibliotecaView, null);
 
         options.selectOption();
         exit.expectSystemExitWithStatus(0);
