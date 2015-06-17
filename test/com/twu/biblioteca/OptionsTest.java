@@ -79,13 +79,30 @@ public class OptionsTest {
         Library library = mock(Library.class);
         Options options = new Options(library,bibliotecaView);
 
-        //int selectedOption = Integer.parseInt(inContent.toString());
         options.selectOption();
 
 
-        verify(library,times(1)).displayAvailableBooks();
+        verify(library, times(1)).displayAvailableBooks();
 
     }
+
+    @Test
+    public void shouldCallCheckOutFunctionWhenSecondOptionIsSelected(){
+        inContent = new ByteArrayInputStream("2\nHarry Potter\n4".getBytes());
+
+        ArrayList<Book> booksList = new ArrayList<Book>();
+        Scanner input = new Scanner(inContent);
+        BibliotecaView bibliotecaView = new BibliotecaView(input);
+        Library library = mock(Library.class);
+        Options options = new Options(library,bibliotecaView);
+
+        options.selectOption();
+        String bookName = "Harry Potter";
+
+        verify(library,times(1)).checkOutBook(bookName);
+    }
+
+    
 
     @After
     public void cleanUp(){
