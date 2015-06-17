@@ -38,5 +38,23 @@ import static org.junit.Assert.assertThat;
         assertThat(outContent.toString(),is("Thank you! Enjoy the book\n"));
         }
 
+        @Test
+        public void shouldPrintErrorMessageIfCheckingOutUnavailableBook(){
+            ArrayList<Book> availableBooksList = new ArrayList<Book>();
+            BibliotecaView view = new BibliotecaView(null);
+            ArrayList<Book> checkedoutBookList = new ArrayList<Book>();
+            Library library = new Library(availableBooksList,checkedoutBookList,view);
+            Librarian librarian = new Librarian(availableBooksList,checkedoutBookList,library, view);
+
+            availableBooksList.add(new Book("Harry Potter", "J.K.Rowling", "1990"));
+            availableBooksList.add(new Book("The Hobbit", "Tolkein", "2001"));
+            availableBooksList.add(new Book("Hound of Baskervilles", "Doyle", "1902"));
+
+            librarian.checkOutBook("Prince of Persia");
+
+
+            assertThat(outContent.toString(),is("That book is not available.\n"));
+        }
+
 
     }

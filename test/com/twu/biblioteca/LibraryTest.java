@@ -46,37 +46,6 @@ public class LibraryTest {
         assertThat(outContent.toString(), is(equalTo("1 Book Name : Harry Potter Author : J.K.Rowling yearOfPublication : 1990\n2 Book Name : The Hobbit Author : Tolkein yearOfPublication : 2001\n3 Book Name : Hound of Baskervilles Author : Doyle yearOfPublication : 1902\n")));
     }
 
-//    @Test
-//    public void shouldcheckOutParticularBook(){
-//        ArrayList<Book> bookList = new ArrayList<Book>();
-//        ArrayList<Book> checkedoutBookList = new ArrayList<Book>();
-//        bookList.add(new Book("Harry Potter", "J.K.Rowling", "1990"));
-//        bookList.add(new Book("The Hobbit", "Tolkein", "2001"));
-//        bookList.add(new Book("Hound of Baskervilles", "Doyle", "1902"));
-//        BibliotecaView view = new BibliotecaView(null);
-//        Library library = new Library(bookList,checkedoutBookList,view);
-//
-//        library.checkOutBook("Harry Potter");
-//
-//
-//        assertThat(outContent.toString(),is("Thank you! Enjoy the book\n"));
-//    }
-//
-//    @Test
-//    public void shouldPrintErrorMessageIfCheckingOutUnavailableBook(){
-//        ArrayList<Book> bookList = new ArrayList<Book>();
-//        ArrayList<Book> checkedoutBookList = new ArrayList<Book>();
-//        bookList.add(new Book("Harry Potter", "J.K.Rowling", "1990"));
-//        bookList.add(new Book("The Hobbit", "Tolkein", "2001"));
-//        bookList.add(new Book("Hound of Baskervilles", "Doyle", "1902"));
-//        BibliotecaView view = new BibliotecaView(null);
-//        Library library = new Library(bookList,checkedoutBookList,view);
-//
-//        library.checkOutBook("Prince of Persia");
-//
-//
-//        assertThat(outContent.toString(),is("That book is not available.\n"));
-//    }
 
     @Test
     public void shouldreturnParticularBook(){
