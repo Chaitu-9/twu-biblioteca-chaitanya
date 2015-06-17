@@ -61,7 +61,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 27)
+    (0/ 12)
   </span>
 </td>
 </tr>
@@ -85,48 +85,21 @@
 <b class="nc"><i>11</i>&nbsp;        availableBooksList.add(new Book(&quot;Harry Potter&quot;, &quot;J.K.Rowling&quot;, &quot;1990&quot;));</b>
 <b class="nc"><i>12</i>&nbsp;        availableBooksList.add(new Book(&quot;The Hobbit&quot;, &quot;Tolkein&quot;, &quot;2001&quot;));</b>
 <b class="nc"><i>13</i>&nbsp;        availableBooksList.add(new Book(&quot;Hound of Baskervilles&quot;, &quot;Doyle&quot;, &quot;1902&quot;));</b>
-<b class="nc"><i>14</i>&nbsp;        BibliotecaView bibliotecaView = new BibliotecaView(input);</b>
-<b class="nc"><i>15</i>&nbsp;        Library library = new Library(availableBooksList, checkedoutBooksList, bibliotecaView);</b>
-<i>16</i>&nbsp;
-<b class="nc"><i>17</i>&nbsp;        Options options = new Options(library);</b>
-<b class="nc"><i>18</i>&nbsp;        options.start();</b>
-<i>19</i>&nbsp;
-<i>20</i>&nbsp;        int option;
-<i>21</i>&nbsp;        String bookName;
-<i>22</i>&nbsp;
-<i>23</i>&nbsp;        do {
-<b class="nc"><i>24</i>&nbsp;            option = bibliotecaView.getInput();</b>
-<b class="nc"><i>25</i>&nbsp;        switch (option) {</b>
-<i>26</i>&nbsp;            case 1:
-<b class="nc"><i>27</i>&nbsp;                library.displayAvailableBooks();</b>
-<b class="nc"><i>28</i>&nbsp;                break;</b>
-<i>29</i>&nbsp;            case 2:
-<b class="nc"><i>30</i>&nbsp;                input.nextLine();</b>
-<b class="nc"><i>31</i>&nbsp;                bookName = input.nextLine();</b>
-<b class="nc"><i>32</i>&nbsp;                library.checkOutBook(bookName);</b>
-<b class="nc"><i>33</i>&nbsp;                break;</b>
-<i>34</i>&nbsp;            case 3:
-<b class="nc"><i>35</i>&nbsp;                input.nextLine();</b>
-<b class="nc"><i>36</i>&nbsp;                bookName = input.nextLine();</b>
-<b class="nc"><i>37</i>&nbsp;                library.returnBook(bookName);</b>
-<b class="nc"><i>38</i>&nbsp;                break;</b>
-<i>39</i>&nbsp;            case 4:
-<b class="nc"><i>40</i>&nbsp;                System.exit(0);</b>
-<b class="nc"><i>41</i>&nbsp;                break;</b>
-<i>42</i>&nbsp;            default:
-<b class="nc"><i>43</i>&nbsp;                System.out.println(&quot;Invalid Option. Enter again : &quot;);</b>
-<i>44</i>&nbsp;                break;
-<i>45</i>&nbsp;        }
-<b class="nc"><i>46</i>&nbsp;        }while (option != -1);</b>
-<i>47</i>&nbsp;
-<i>48</i>&nbsp;    }
-<i>49</i>&nbsp;}
+<i>14</i>&nbsp;        
+<b class="nc"><i>15</i>&nbsp;        BibliotecaView bibliotecaView = new BibliotecaView(input);</b>
+<b class="nc"><i>16</i>&nbsp;        Library library = new Library(availableBooksList, checkedoutBooksList, bibliotecaView);</b>
+<i>17</i>&nbsp;
+<b class="nc"><i>18</i>&nbsp;        Options options = new Options(library, bibliotecaView);</b>
+<b class="nc"><i>19</i>&nbsp;        options.start();</b>
+<b class="nc"><i>20</i>&nbsp;        options.selectOption();</b>
+<i>21</i>&nbsp;    }
+<i>22</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2015-06-16 17:44</div>
+    <div style="float:right;">generated on 2015-06-17 11:53</div>
 </div>
 </body>
 </html>

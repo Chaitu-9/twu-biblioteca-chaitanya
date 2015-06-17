@@ -2,7 +2,9 @@ package com.twu.biblioteca;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -23,6 +25,9 @@ public class OptionsTest {
     public void setUp(){
         System.setOut(new PrintStream(outContent));
     }
+
+    @Rule
+    public final ExpectedSystemExit exit = ExpectedSystemExit.none();
 
     @Test
     public void shouldcallWelcomeAndDisplayOptionsMethod(){
@@ -116,6 +121,20 @@ public class OptionsTest {
         String bookName = "Harry Potter";
 
         verify(library,times(1)).returnBook(bookName);
+    }
+
+    @Test
+    public void shouldExitWhenFourthOptionIsSelected() {
+        inContent = new ByteArrayInputStream("4".getBytes());
+
+        Scanner input = new Scanner(inContent);
+        BibliotecaView bibliotecaView = new BibliotecaView(input);
+        Library library = mock(Library.class);
+        Options options = new Options(library,bibliotecaView);
+
+        options.selectOption();
+        exit.expectSystemExitWithStatus(0);
+        System.exit(0);
     }
 
 
