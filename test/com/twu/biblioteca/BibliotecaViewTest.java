@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.swing.text.View;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -24,7 +23,7 @@ public class BibliotecaViewTest {
     public void shouldGetInputFromUser(){
     Scanner input = new Scanner(inContent);
     BibliotecaView view = new BibliotecaView(input);
-    String actualValue = view.getInput() + "";
+    String actualValue = view.getIntegerInput() + "";
     String expectedValue = "1";
 
     assertThat(actualValue, is(expectedValue));

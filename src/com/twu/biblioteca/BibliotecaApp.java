@@ -11,39 +11,12 @@ public class BibliotecaApp {
         availableBooksList.add(new Book("Harry Potter", "J.K.Rowling", "1990"));
         availableBooksList.add(new Book("The Hobbit", "Tolkein", "2001"));
         availableBooksList.add(new Book("Hound of Baskervilles", "Doyle", "1902"));
+        
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = new Library(availableBooksList, checkedoutBooksList, bibliotecaView);
 
-        Options options = new Options(library);
+        Options options = new Options(library, bibliotecaView);
         options.start();
-
-        int option;
-        String bookName;
-
-        do {
-            option = bibliotecaView.getInput();
-        switch (option) {
-            case 1:
-                library.displayAvailableBooks();
-                break;
-            case 2:
-                input.nextLine();
-                bookName = input.nextLine();
-                library.checkOutBook(bookName);
-                break;
-            case 3:
-                input.nextLine();
-                bookName = input.nextLine();
-                library.returnBook(bookName);
-                break;
-            case 4:
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Invalid Option. Enter again : ");
-                break;
-        }
-        }while (option != -1);
-
+        options.selectOption();
     }
 }

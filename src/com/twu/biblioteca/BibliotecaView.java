@@ -10,8 +10,12 @@ public class BibliotecaView {
         this.input = input;
     }
 
-    public int getInput(){
-       return input.nextInt();
+    public int getIntegerInput(){
+        return input.nextInt();
+    }
+
+    public String getStringInput(){
+        return input.nextLine();
     }
 
     public void display(String message){
