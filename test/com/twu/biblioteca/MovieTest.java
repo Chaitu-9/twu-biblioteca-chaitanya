@@ -19,5 +19,62 @@ public class MovieTest {
         assertThat(actualValue, is(movie.toString()));
     }
 
-    
+    @Test
+    public void testForReflexivity() {
+        Movie movie1 = null;
+
+        assertEquals(movie1, movie1);
+    }
+
+    @Test
+    public void testForComparingNullObjectsWithAMovie() {
+        Movie movie1 = null;
+
+        assertThat(movie1, not(equalTo(null)));
+    }
+
+    @Test
+    public void testForEquality() {
+        Movie movie1 = null;
+        Movie movie2 = null;
+
+        assertEquals(movie1, movie2);
+    }
+
+    @Test
+    public void testForDifferentObjects() {
+        Movie movie1 = null;
+        Object one = new Integer(1);
+
+        assertThat(movie1, not(equalTo(one)));
+    }
+
+    @Test
+    public void testForTransitivity() {
+        Movie movie1 = null;
+        Movie movie2 = null;
+        Movie movie3 = null;
+
+        assertEquals(movie1, movie2);
+        assertEquals(movie2, movie1);
+        assertEquals(movie1, movie3);
+    }
+
+    @Test
+    public void testForSymmetry() {
+        Movie movie1 = null;
+        Movie movie2 = null;
+
+        assertEquals(movie1, movie2);
+        assertEquals(movie2, movie1);
+    }
+
+    @Test
+    public void equalityTestForHashCode() {
+        Movie movie1 = null;
+        Movie movie2 = null;
+
+        assertEquals(movie1.hashCode(), movie2.hashCode());
+    }
+
 }
