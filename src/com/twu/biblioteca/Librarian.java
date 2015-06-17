@@ -24,4 +24,18 @@ public class Librarian {
         bibliotecaView.display(Messages.UNSUCCESSFUL_CHECKOUT);
         return false;
     }
+
+    public boolean returnBook(String bookName) {
+        for (int bookNumber = 0; bookNumber < checkedoutBooksList.size(); bookNumber++)
+            if (checkedoutBooksList.get(bookNumber).hashCode() == bookName.hashCode()) {
+                Book book = library.removeBook(checkedoutBooksList,bookNumber);
+                library.addBook(availableBooksList,book);
+                bibliotecaView.display(Messages.SUCCESSFUL_RETURN);
+                return true;
+            }
+        bibliotecaView.display(Messages.UNSUCCESSFUL_RETURN);
+        return false;
+    }
+
+
 }

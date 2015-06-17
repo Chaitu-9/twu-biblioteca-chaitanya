@@ -95,11 +95,12 @@ public class OptionsTest {
     public void shouldCallCheckOutFunctionWhenSecondOptionIsSelected(){
         inContent = new ByteArrayInputStream("2\nHarry Potter\n4".getBytes());
 
-        ArrayList<Book> booksList = new ArrayList<Book>();
+        ArrayList<Book> availableBooksList = new ArrayList<Book>();
+        ArrayList<Book> checkedoutBooksList = new ArrayList<Book>();
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);
-        Library library = mock(Library.class);
-        Librarian librarian =new Librarian(null,null,null,null);
+        Library library = new Library(availableBooksList,checkedoutBooksList,bibliotecaView);
+        Librarian librarian =mock(Librarian.class);
         Options options = new Options(library,bibliotecaView, null);
 
         options.selectOption();
@@ -109,19 +110,21 @@ public class OptionsTest {
     }
 
     @Test
-    public void shouldCallReturnFunctionWhenThirdOptionIsSelected(){
+    public void shouldCallReturnBookFunctionWhenThirdOptionIsSelected(){
         inContent = new ByteArrayInputStream("3\nHarry Potter\n4".getBytes());
 
-        ArrayList<Book> booksList = new ArrayList<Book>();
+        ArrayList<Book> availableBooksList = new ArrayList<Book>();
+        ArrayList<Book> checkedoutBooksList = new ArrayList<Book>();
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);
-        Library library = mock(Library.class);
-        Options options = new Options(library,bibliotecaView, null);
+        Library library = new Library(availableBooksList,checkedoutBooksList,bibliotecaView);
+        Librarian librarian =mock(Librarian.class);
+        Options options = new Options(library,bibliotecaView, librarian);
 
         options.selectOption();
         String bookName = "Harry Potter";
 
-        verify(library,times(1)).returnBook(bookName);
+        verify(librarian,times(1)).returnBook(bookName);
     }
 
     @Test

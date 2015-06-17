@@ -48,7 +48,7 @@ public class Options {
                 case 3:
                     bibliotecaView.getStringInput();
                     bookName = bibliotecaView.getStringInput();
-                    library.returnBook(bookName);
+                    librarian.returnBook(bookName);
                     break;
                 case 4:
                     return;
