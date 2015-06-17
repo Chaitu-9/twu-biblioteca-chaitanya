@@ -102,7 +102,22 @@ public class OptionsTest {
         verify(library,times(1)).checkOutBook(bookName);
     }
 
-    
+    @Test
+    public void shouldCallReturnFunctionWhenThirdOptionIsSelected(){
+        inContent = new ByteArrayInputStream("3\nHarry Potter\n4".getBytes());
+
+        ArrayList<Book> booksList = new ArrayList<Book>();
+        Scanner input = new Scanner(inContent);
+        BibliotecaView bibliotecaView = new BibliotecaView(input);
+        Library library = mock(Library.class);
+        Options options = new Options(library,bibliotecaView);
+
+        options.selectOption();
+        String bookName = "Harry Potter";
+
+        verify(library,times(1)).returnBook(bookName);
+    }
+
 
     @After
     public void cleanUp(){
