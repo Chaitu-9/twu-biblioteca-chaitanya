@@ -14,8 +14,8 @@ public class BibliotecaApp {
 
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = new Library(availableBooksList, checkedoutBooksList, bibliotecaView);
-
-        Options options = new Options(library, bibliotecaView, null);
+        Librarian librarian = new Librarian(availableBooksList, checkedoutBooksList, library, bibliotecaView);
+        Options options = new Options(library, bibliotecaView, librarian);
         options.start();
         options.selectOption();
     }

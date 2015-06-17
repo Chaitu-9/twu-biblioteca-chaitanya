@@ -14,7 +14,9 @@ import java.util.Scanner;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 public class OptionsTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -101,7 +103,7 @@ public class OptionsTest {
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = new Library(availableBooksList,checkedoutBooksList,bibliotecaView);
         Librarian librarian =mock(Librarian.class);
-        Options options = new Options(library,bibliotecaView, null);
+        Options options = new Options(library,bibliotecaView,librarian);
 
         options.selectOption();
         String bookName = "Harry Potter";
