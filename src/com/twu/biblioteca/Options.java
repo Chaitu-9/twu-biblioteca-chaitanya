@@ -51,6 +51,10 @@ public class Options {
                     librarian.returnBook(name);
                     break;
                 case 4:
+                    bibliotecaView.getStringInput();
+                    name = bibliotecaView.getStringInput();
+                    librarian.checkOutMovie(name);
+                case 5:
                     return;
                 default:
                     System.out.println("Invalid Option. Enter again : ");

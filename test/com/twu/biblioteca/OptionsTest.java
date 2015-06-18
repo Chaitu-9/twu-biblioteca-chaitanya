@@ -12,6 +12,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
@@ -48,9 +49,9 @@ public class OptionsTest {
     }
 
     @Test
-    public void shouldPrintWelcomeMessage(){
+    public void shouldPrintWelcomeMessage() {
         ArrayList<Book> booksList = new ArrayList<Book>();
-        Library library = new Library(booksList,null, null);
+        Library library = new Library(booksList, null, null);
         Options options = new Options(library, null, null);
 
         String actualMessage = Messages.WELCOME_MESSAGE;
@@ -78,7 +79,7 @@ public class OptionsTest {
 
     @Test
     public void shouldDisplayAvailableBooksWhenFirstOptionIsSelected(){
-        inContent = new ByteArrayInputStream("1\n4".getBytes());
+        inContent = new ByteArrayInputStream("1\n5".getBytes());
 
         ArrayList<Book> booksList = new ArrayList<Book>();
         Scanner input = new Scanner(inContent);
@@ -95,7 +96,7 @@ public class OptionsTest {
 
     @Test
     public void shouldCallCheckOutFunctionWhenSecondOptionIsSelected(){
-        inContent = new ByteArrayInputStream("2\nHarry Potter\n4".getBytes());
+        inContent = new ByteArrayInputStream("2\nHarry Potter\n5".getBytes());
 
         ArrayList<Book> availableBooksList = new ArrayList<Book>();
         ArrayList<Book> checkedoutBooksList = new ArrayList<Book>();
@@ -113,7 +114,7 @@ public class OptionsTest {
 
     @Test
     public void shouldCallReturnBookFunctionWhenThirdOptionIsSelected(){
-        inContent = new ByteArrayInputStream("3\nHarry Potter\n4".getBytes());
+        inContent = new ByteArrayInputStream("3\nHarry Potter\n5".getBytes());
 
         ArrayList<Book> availableBooksList = new ArrayList<Book>();
         ArrayList<Book> checkedoutBooksList = new ArrayList<Book>();
@@ -129,9 +130,10 @@ public class OptionsTest {
         verify(librarian,times(1)).returnBook(bookName);
     }
 
+
     @Test
-    public void shouldExitWhenFourthOptionIsSelected() {
-        inContent = new ByteArrayInputStream("4".getBytes());
+    public void shouldExitWhenFifthOptionIsSelected() {
+        inContent = new ByteArrayInputStream("5".getBytes());
 
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);
