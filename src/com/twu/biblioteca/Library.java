@@ -2,14 +2,11 @@ package com.twu.biblioteca;
 
 
 import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Library {
 
     ArrayList<Book> availableBooksList;
     ArrayList<Book> checkedoutBooksList;
     BibliotecaView bibliotecaView;
-    Scanner bookName;
 
     public Library(ArrayList availableBooksList, ArrayList checkedoutBooksList, BibliotecaView bibliotecaView) {
         this.availableBooksList = availableBooksList;
@@ -30,7 +27,11 @@ public class Library {
         bookList.add(book);
     }
 
-    public Book removeBook(ArrayList<Book> bookList, int bookNumber ){
+    public Book removeBook(ArrayList<Book> bookList, int bookNumber){
         return bookList.remove(bookNumber);
+    }
+
+    public Movie removeMovie(ArrayList<Movie> movieList, int movieNumber){
+        return movieList.remove(movieNumber);
     }
 }

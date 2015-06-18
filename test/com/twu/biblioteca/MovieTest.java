@@ -21,29 +21,29 @@ public class MovieTest {
 
     @Test
     public void testForReflexivity() {
-        Movie movie1 = null;
+        Movie movie1 = new Movie(null,0,null,0);
 
         assertEquals(movie1, movie1);
     }
 
     @Test
     public void testForComparingNullObjectsWithAMovie() {
-        Movie movie1 = null;
+        Movie movie1 = new Movie(null,0,null,0);
 
         assertThat(movie1, not(equalTo(null)));
     }
 
     @Test
     public void testForEquality() {
-        Movie movie1 = null;
-        Movie movie2 = null;
+        Movie movie1 = new Movie(null,0,null,0);
+        Movie movie2 = new Movie(null,0,null,0);
 
         assertEquals(movie1, movie2);
     }
 
     @Test
     public void testForDifferentObjects() {
-        Movie movie1 = null;
+        Movie movie1 = new Movie(null,0,null,0);
         Object one = new Integer(1);
 
         assertThat(movie1, not(equalTo(one)));
@@ -51,9 +51,9 @@ public class MovieTest {
 
     @Test
     public void testForTransitivity() {
-        Movie movie1 = null;
-        Movie movie2 = null;
-        Movie movie3 = null;
+        Movie movie1 = new Movie(null,0,null,0);
+        Movie movie2 = new Movie(null,0,null,0);
+        Movie movie3 = new Movie(null,0,null,0);
 
         assertEquals(movie1, movie2);
         assertEquals(movie2, movie1);
@@ -62,8 +62,8 @@ public class MovieTest {
 
     @Test
     public void testForSymmetry() {
-        Movie movie1 = null;
-        Movie movie2 = null;
+        Movie movie1 = new Movie(null,0,null,0);
+        Movie movie2 = new Movie(null,0,null,0);
 
         assertEquals(movie1, movie2);
         assertEquals(movie2, movie1);
@@ -71,8 +71,8 @@ public class MovieTest {
 
     @Test
     public void equalityTestForHashCode() {
-        Movie movie1 = null;
-        Movie movie2 = null;
+        Movie movie1 = new Movie(null,0,null,0);
+        Movie movie2 = new Movie(null,0,null,0);
 
         assertEquals(movie1.hashCode(), movie2.hashCode());
     }

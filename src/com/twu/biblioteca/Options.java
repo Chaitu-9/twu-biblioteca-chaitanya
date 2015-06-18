@@ -32,7 +32,7 @@ public class Options {
 
     public void selectOption(){
         int option;
-        String bookName;
+        String name;
 
         do {
             option = bibliotecaView.getIntegerInput();
@@ -42,13 +42,13 @@ public class Options {
                     break;
                 case 2:
                     bibliotecaView.getStringInput();
-                    bookName = bibliotecaView.getStringInput();
-                    librarian.checkOutBook(bookName);
+                    name = bibliotecaView.getStringInput();
+                    librarian.checkOutBook(name);
                     break;
                 case 3:
                     bibliotecaView.getStringInput();
-                    bookName = bibliotecaView.getStringInput();
-                    librarian.returnBook(bookName);
+                    name = bibliotecaView.getStringInput();
+                    librarian.returnBook(name);
                     break;
                 case 4:
                     return;
