@@ -40,9 +40,10 @@ public class OptionsTest {
         options.start();
 
         String actualMessage = Messages.WELCOME_MESSAGE + "\n1. " + Messages.LIST_BOOKS + "\n" +
-                "2. "+ Messages.CHECKOUT +"\n" +
+                "2. "+ Messages.CHECKOUT_BOOK +"\n" +
                 "3. " + Messages.RETURN +"\n"+
-                "4. " + Messages.EXIT + "\n";
+                "4. " + Messages.CHECKOUT_MOVIE +"\n"+
+                "6. " + Messages.EXIT + "\n";
         String expectedMessage = outContent.toString();
 
         assertThat(actualMessage, is(expectedMessage));
@@ -68,9 +69,10 @@ public class OptionsTest {
         Options options = new Options(library, null, null);
 
         String actualMessage = "\n1. " + Messages.LIST_BOOKS + "\n" +
-                "2. "+ Messages.CHECKOUT +"\n" +
+                "2. "+ Messages.CHECKOUT_BOOK +"\n" +
                 "3. " + Messages.RETURN +"\n"+
-                "4. " + Messages.EXIT + "\n";
+                "4. " + Messages.CHECKOUT_MOVIE +"\n"+
+                "6. " + Messages.EXIT + "\n";
         options.displayOptions();
         String expectedMessage = outContent.toString();
 
@@ -79,7 +81,7 @@ public class OptionsTest {
 
     @Test
     public void shouldDisplayAvailableBooksWhenFirstOptionIsSelected(){
-        inContent = new ByteArrayInputStream("1\n5".getBytes());
+        inContent = new ByteArrayInputStream("1\n6".getBytes());
 
         ArrayList<Book> booksList = new ArrayList<Book>();
         Scanner input = new Scanner(inContent);
@@ -96,7 +98,7 @@ public class OptionsTest {
 
     @Test
     public void shouldCallCheckOutFunctionWhenSecondOptionIsSelected(){
-        inContent = new ByteArrayInputStream("2\nHarry Potter\n5".getBytes());
+        inContent = new ByteArrayInputStream("2\nHarry Potter\n6".getBytes());
 
         ArrayList<Book> availableBooksList = new ArrayList<Book>();
         ArrayList<Book> checkedoutBooksList = new ArrayList<Book>();
@@ -114,7 +116,7 @@ public class OptionsTest {
 
     @Test
     public void shouldCallReturnBookFunctionWhenThirdOptionIsSelected(){
-        inContent = new ByteArrayInputStream("3\nHarry Potter\n5".getBytes());
+        inContent = new ByteArrayInputStream("3\nHarry Potter\n6".getBytes());
 
         ArrayList<Book> availableBooksList = new ArrayList<Book>();
         ArrayList<Book> checkedoutBooksList = new ArrayList<Book>();
@@ -130,10 +132,28 @@ public class OptionsTest {
         verify(librarian,times(1)).returnBook(bookName);
     }
 
+    @Test
+    public void shouldCallCheckOutMovieFunctionWhenFourthOptionIsSelected(){
+        inContent = new ByteArrayInputStream("4\nHarry Potter\n6".getBytes());
+
+        ArrayList<Book> availableBooksList = new ArrayList<Book>();
+        ArrayList<Book> checkedoutBooksList = new ArrayList<Book>();
+        Scanner input = new Scanner(inContent);
+        BibliotecaView bibliotecaView = new BibliotecaView(input);
+        Library library = new Library(availableBooksList,checkedoutBooksList,bibliotecaView);
+        Librarian librarian =mock(Librarian.class);
+        Options options = new Options(library,bibliotecaView,librarian);
+
+        options.selectOption();
+        String movieName = "Harry Potter";
+
+        verify(librarian,times(1)).checkOutMovie(movieName);
+    }
+
 
     @Test
-    public void shouldExitWhenFifthOptionIsSelected() {
-        inContent = new ByteArrayInputStream("5".getBytes());
+    public void shouldExitWhenSixthOptionIsSelected() {
+        inContent = new ByteArrayInputStream("6".getBytes());
 
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);

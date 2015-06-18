@@ -25,9 +25,10 @@ public class Options {
 
     public void displayOptions(){
         System.out.print("\n1. " + Messages.LIST_BOOKS + "\n" +
-                "2. " + Messages.CHECKOUT +"\n" +
+                "2. " + Messages.CHECKOUT_BOOK +"\n" +
                 "3. " + Messages.RETURN +"\n"+
-                "4. " + Messages.EXIT + "\n");
+                "4. " + Messages.CHECKOUT_MOVIE +"\n"+
+                "6. " + Messages.EXIT + "\n");
     }
 
     public void selectOption(){
@@ -54,7 +55,7 @@ public class Options {
                     bibliotecaView.getStringInput();
                     name = bibliotecaView.getStringInput();
                     librarian.checkOutMovie(name);
-                case 5:
+                case 6:
                     return;
                 default:
                     System.out.println("Invalid Option. Enter again : ");

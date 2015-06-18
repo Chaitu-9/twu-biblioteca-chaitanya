@@ -4,7 +4,8 @@ public interface Messages {
     String WELCOME_MESSAGE = "Welcome to Bengaluru public Library...";
     String LIST_BOOKS = "List Books";
     String EXIT = "Exit";
-    String CHECKOUT = "Checkout";
+    String CHECKOUT_BOOK = "Checkout Book";
+    String CHECKOUT_MOVIE = "Checkout Movie";
     String SUCCESSFUL_CHECKOUT_BOOK = "Thank you! Enjoy the book";
     String SUCCESSFUL_CHECKOUT_MOVIE = "Thank you! Enjoy the Movie";
     String UNSUCCESSFUL_CHECKOUT_BOOK = "That book is not available.";
