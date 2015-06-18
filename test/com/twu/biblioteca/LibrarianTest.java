@@ -8,6 +8,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 
@@ -108,6 +109,24 @@ import static org.junit.Assert.assertThat;
 
 
             assertThat(outContent.toString(),is("Thank you! Enjoy the Movie\n"));
+        }
+
+        @Test
+        public void shouldDisplayErrorMessageIfCheckingoutUnavailableMovie(){
+            ArrayList<Book> availableBooksList = new ArrayList<Book>();
+            ArrayList<Book> checkedoutBookList = new ArrayList<Book>();
+            ArrayList<Movie> availableMoviesList = new ArrayList<Movie>();
+            BibliotecaView view = new BibliotecaView(null);
+
+            availableMoviesList.add(new Movie("Inception",2010,"Nolan", 8.8));
+            availableMoviesList.add(new Movie("Matrix",1990, "Andy", 8.7));
+            availableMoviesList.add(new Movie("Dark Knight",2008 , "Nolan", 9.0));
+            Library library = new Library(availableBooksList,checkedoutBookList,view);
+            Librarian librarian = new Librarian(null,null,library, view, availableMoviesList, null);
+
+            librarian.checkOutMovie("Harry Potter");
+
+            assertEquals(outContent.toString(), "That movie is not available.\n");
         }
 
     }
