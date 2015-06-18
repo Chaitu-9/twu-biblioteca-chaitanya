@@ -1,11 +1,9 @@
 package com.twu.biblioteca;
 
-import java.util.Scanner;
 
 //Display options for user
 public class Options {
     Library library;
-    Scanner input;
     private BibliotecaView bibliotecaView;
     private Librarian librarian;
 
@@ -27,8 +25,9 @@ public class Options {
         System.out.print("\n1. " + Messages.LIST_BOOKS + "\n" +
                 "2. " + Messages.CHECKOUT_BOOK +"\n" +
                 "3. " + Messages.RETURN +"\n"+
-                "4. " + Messages.CHECKOUT_MOVIE +"\n"+
-                "6. " + Messages.EXIT + "\n");
+                "4. " + Messages.LIST_MOVIES +"\n"+
+                "5. " + Messages.CHECKOUT_MOVIE +"\n"+
+                "7. " + Messages.EXIT + "\n");
     }
 
     public void selectOption(){
@@ -52,10 +51,14 @@ public class Options {
                     librarian.returnBook(name);
                     break;
                 case 4:
+                    library.displayAvailableMovies();
+                    break;
+                case 5:
                     bibliotecaView.getStringInput();
                     name = bibliotecaView.getStringInput();
                     librarian.checkOutMovie(name);
-                case 6:
+                    break;
+                case 7:
                     return;
                 default:
                     System.out.println("Invalid Option. Enter again : ");

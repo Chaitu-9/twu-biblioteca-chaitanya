@@ -42,8 +42,9 @@ public class OptionsTest {
         String actualMessage = Messages.WELCOME_MESSAGE + "\n1. " + Messages.LIST_BOOKS + "\n" +
                 "2. "+ Messages.CHECKOUT_BOOK +"\n" +
                 "3. " + Messages.RETURN +"\n"+
-                "4. " + Messages.CHECKOUT_MOVIE +"\n"+
-                "6. " + Messages.EXIT + "\n";
+                "4. " + Messages.LIST_MOVIES +"\n"+
+                "5. " + Messages.CHECKOUT_MOVIE +"\n"+
+                "7. " + Messages.EXIT + "\n";
         String expectedMessage = outContent.toString();
 
         assertThat(actualMessage, is(expectedMessage));
@@ -71,8 +72,9 @@ public class OptionsTest {
         String actualMessage = "\n1. " + Messages.LIST_BOOKS + "\n" +
                 "2. "+ Messages.CHECKOUT_BOOK +"\n" +
                 "3. " + Messages.RETURN +"\n"+
-                "4. " + Messages.CHECKOUT_MOVIE +"\n"+
-                "6. " + Messages.EXIT + "\n";
+                "4. " + Messages.LIST_MOVIES +"\n"+
+                "5. " + Messages.CHECKOUT_MOVIE +"\n"+
+                "7. " + Messages.EXIT + "\n";
         options.displayOptions();
         String expectedMessage = outContent.toString();
 
@@ -81,7 +83,7 @@ public class OptionsTest {
 
     @Test
     public void shouldDisplayAvailableBooksWhenFirstOptionIsSelected(){
-        inContent = new ByteArrayInputStream("1\n6".getBytes());
+        inContent = new ByteArrayInputStream("1\n7".getBytes());
 
         ArrayList<Book> booksList = new ArrayList<Book>();
         Scanner input = new Scanner(inContent);
@@ -98,10 +100,10 @@ public class OptionsTest {
 
     @Test
     public void shouldCallCheckOutFunctionWhenSecondOptionIsSelected(){
-        inContent = new ByteArrayInputStream("2\nHarry Potter\n6".getBytes());
+        inContent = new ByteArrayInputStream("2\nHarry Potter\n7".getBytes());
 
         ArrayList<Book> availableBooksList = new ArrayList<Book>();
-        ArrayList<Book> checkedoutBooksList = new ArrayList<Book>();
+        ArrayList<Movie> checkedoutBooksList = new ArrayList<Movie>();
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = new Library(availableBooksList,checkedoutBooksList,bibliotecaView);
@@ -116,10 +118,10 @@ public class OptionsTest {
 
     @Test
     public void shouldCallReturnBookFunctionWhenThirdOptionIsSelected(){
-        inContent = new ByteArrayInputStream("3\nHarry Potter\n6".getBytes());
+        inContent = new ByteArrayInputStream("3\nHarry Potter\n7".getBytes());
 
         ArrayList<Book> availableBooksList = new ArrayList<Book>();
-        ArrayList<Book> checkedoutBooksList = new ArrayList<Book>();
+        ArrayList<Movie> checkedoutBooksList = new ArrayList<Movie>();
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = new Library(availableBooksList,checkedoutBooksList,bibliotecaView);
@@ -133,11 +135,28 @@ public class OptionsTest {
     }
 
     @Test
-    public void shouldCallCheckOutMovieFunctionWhenFourthOptionIsSelected(){
-        inContent = new ByteArrayInputStream("4\nHarry Potter\n6".getBytes());
+    public void shouldDisplayAvailableMoviesWhenFourthOptionIsSelected(){
+        inContent = new ByteArrayInputStream("4\n7".getBytes());
+
+        ArrayList<Book> booksList = new ArrayList<Book>();
+        Scanner input = new Scanner(inContent);
+        BibliotecaView bibliotecaView = new BibliotecaView(input);
+        Library library = mock(Library.class);
+        Options options = new Options(library,bibliotecaView, null);
+
+        options.selectOption();
+
+
+        verify(library, times(1)).displayAvailableMovies();
+
+    }
+
+    @Test
+    public void shouldCallCheckOutMovieFunctionWhenFifthOptionIsSelected(){
+        inContent = new ByteArrayInputStream("5\nHarry Potter\n7".getBytes());
 
         ArrayList<Book> availableBooksList = new ArrayList<Book>();
-        ArrayList<Book> checkedoutBooksList = new ArrayList<Book>();
+        ArrayList<Movie> checkedoutBooksList = new ArrayList<Movie>();
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = new Library(availableBooksList,checkedoutBooksList,bibliotecaView);
@@ -153,7 +172,7 @@ public class OptionsTest {
 
     @Test
     public void shouldExitWhenSixthOptionIsSelected() {
-        inContent = new ByteArrayInputStream("6".getBytes());
+        inContent = new ByteArrayInputStream("7".getBytes());
 
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);

@@ -34,12 +34,12 @@ public class LibraryTest {
     @Test
     public void shouldDisplayAvailableInLibrary() {
         ArrayList<Book> booksList = new ArrayList<Book>();
-        ArrayList<Book> checkedoutBooksList = new ArrayList<Book>();
+        ArrayList<Movie> movieArrayList = new ArrayList<Movie>();
         BibliotecaView bibliotecaView = new BibliotecaView(null);
         booksList.add(new Book("Harry Potter", "J.K.Rowling", "1990"));
         booksList.add(new Book("The Hobbit", "Tolkein", "2001"));
         booksList.add(new Book("Hound of Baskervilles", "Doyle", "1902"));
-        Library library = new Library(booksList,checkedoutBooksList,bibliotecaView);
+        Library library = new Library(booksList,movieArrayList,bibliotecaView);
 
         library.displayAvailableBooks();
 

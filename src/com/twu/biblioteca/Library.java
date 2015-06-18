@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Library {
 
     ArrayList<Book> availableBooksList;
-    ArrayList<Book> checkedoutBooksList;
+    ArrayList<Movie> availableMoviesList;
     BibliotecaView bibliotecaView;
 
-    public Library(ArrayList availableBooksList, ArrayList checkedoutBooksList, BibliotecaView bibliotecaView) {
+    public Library(ArrayList availableBooksList, ArrayList<Movie> availableMoviesList, BibliotecaView bibliotecaView) {
         this.availableBooksList = availableBooksList;
-        this.checkedoutBooksList = checkedoutBooksList;
+        this.availableMoviesList = availableMoviesList;
         this.bibliotecaView = bibliotecaView;
     }
 
@@ -33,5 +33,10 @@ public class Library {
 
     public Movie removeMovie(ArrayList<Movie> movieList, int movieNumber){
         return movieList.remove(movieNumber);
+    }
+
+    public void displayAvailableMovies() {
+        for (int x = 0; x < availableMoviesList.size(); x++)
+            bibliotecaView.display((x + 1 + " " + availableMoviesList.get(x)));
     }
 }
