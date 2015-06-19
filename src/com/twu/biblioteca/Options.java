@@ -24,9 +24,10 @@ public class Options {
     public void displayOptions(){
         System.out.print("\n1. " + Messages.LIST_BOOKS + "\n" +
                 "2. " + Messages.CHECKOUT_BOOK +"\n" +
-                "3. " + Messages.RETURN +"\n"+
+                "3. " + Messages.RETURN_BOOK +"\n"+
                 "4. " + Messages.LIST_MOVIES +"\n"+
                 "5. " + Messages.CHECKOUT_MOVIE +"\n"+
+                "6. " + Messages.RETURN_MOVIE +"\n"+
                 "7. " + Messages.EXIT + "\n");
     }
 
@@ -57,6 +58,11 @@ public class Options {
                     bibliotecaView.getStringInput();
                     name = bibliotecaView.getStringInput();
                     librarian.checkOutMovie(name);
+                    break;
+                case 6:
+                    bibliotecaView.getStringInput();
+                    name = bibliotecaView.getStringInput();
+                    librarian.returnMovie(name);
                     break;
                 case 7:
                     return;

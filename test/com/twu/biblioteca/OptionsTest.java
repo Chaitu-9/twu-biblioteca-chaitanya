@@ -41,9 +41,10 @@ public class OptionsTest {
 
         String actualMessage = Messages.WELCOME_MESSAGE + "\n1. " + Messages.LIST_BOOKS + "\n" +
                 "2. "+ Messages.CHECKOUT_BOOK +"\n" +
-                "3. " + Messages.RETURN +"\n"+
+                "3. " + Messages.RETURN_BOOK +"\n"+
                 "4. " + Messages.LIST_MOVIES +"\n"+
                 "5. " + Messages.CHECKOUT_MOVIE +"\n"+
+                "6. " + Messages.RETURN_MOVIE +"\n"+
                 "7. " + Messages.EXIT + "\n";
         String expectedMessage = outContent.toString();
 
@@ -71,9 +72,10 @@ public class OptionsTest {
 
         String actualMessage = "\n1. " + Messages.LIST_BOOKS + "\n" +
                 "2. "+ Messages.CHECKOUT_BOOK +"\n" +
-                "3. " + Messages.RETURN +"\n"+
+                "3. " + Messages.RETURN_BOOK +"\n"+
                 "4. " + Messages.LIST_MOVIES +"\n"+
                 "5. " + Messages.CHECKOUT_MOVIE +"\n"+
+                "6. " + Messages.RETURN_MOVIE +"\n"+
                 "7. " + Messages.EXIT + "\n";
         options.displayOptions();
         String expectedMessage = outContent.toString();
@@ -167,6 +169,24 @@ public class OptionsTest {
         String movieName = "Harry Potter";
 
         verify(librarian,times(1)).checkOutMovie(movieName);
+    }
+
+    @Test
+    public void shouldCallReturnMovieFunctionWhenSixthOptionIsSelected(){
+        inContent = new ByteArrayInputStream("6\nHarry Potter\n7".getBytes());
+
+        ArrayList<Book> availableBooksList = new ArrayList<Book>();
+        ArrayList<Movie> checkedoutBooksList = new ArrayList<Movie>();
+        Scanner input = new Scanner(inContent);
+        BibliotecaView bibliotecaView = new BibliotecaView(input);
+        Library library = new Library(availableBooksList,checkedoutBooksList,bibliotecaView);
+        Librarian librarian =mock(Librarian.class);
+        Options options = new Options(library,bibliotecaView, librarian);
+
+        options.selectOption();
+        String movieName = "Harry Potter";
+
+        verify(librarian,times(1)).returnMovie(movieName);
     }
 
 
