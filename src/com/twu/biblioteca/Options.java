@@ -6,11 +6,13 @@ public class Options {
     Library library;
     private BibliotecaView bibliotecaView;
     private Librarian librarian;
+    private Login login;
 
-    public Options(Library library, BibliotecaView bibliotecaView, Librarian librarian){
+    public Options(Library library, BibliotecaView bibliotecaView, Librarian librarian, Login login) {
         this.library = library;
         this.bibliotecaView = bibliotecaView;
         this.librarian = librarian;
+        this.login = login;
     }
 
     public void start(){
@@ -33,7 +35,8 @@ public class Options {
 
     public void selectOption(){
         int option;
-        String name;
+        String name, userId, password;
+        boolean valid;
 
         do {
             option = bibliotecaView.getIntegerInput();
@@ -43,10 +46,21 @@ public class Options {
                     break;
                 case 2:
                     bibliotecaView.getStringInput();
-                    name = bibliotecaView.getStringInput();
-                    librarian.checkOutBook(name);
+                    bibliotecaView.display(Messages.USERID_AND_PASSWORD);
+                    userId = bibliotecaView.getStringInput();
+                    password = bibliotecaView.getStringInput();
+                    valid = login.validate(userId, password);
+                    if(valid==true) {
+                        bibliotecaView.display(Messages.SUCCESSFUL_LOGIN);
+                        name = bibliotecaView.getStringInput();
+                        librarian.checkOutBook(name);
+                    }else
+                    bibliotecaView.display(Messages.INVALID_USERID_OR_PASSWORD);
                     break;
                 case 3:
+                    bibliotecaView.display(Messages.USERID_AND_PASSWORD);
+                    bibliotecaView.getStringInput();
+                    bibliotecaView.getStringInput();
                     bibliotecaView.getStringInput();
                     name = bibliotecaView.getStringInput();
                     librarian.returnBook(name);
@@ -55,11 +69,13 @@ public class Options {
                     library.displayAvailableMovies();
                     break;
                 case 5:
+                    bibliotecaView.display(Messages.USERID_AND_PASSWORD);
                     bibliotecaView.getStringInput();
                     name = bibliotecaView.getStringInput();
                     librarian.checkOutMovie(name);
                     break;
                 case 6:
+                    bibliotecaView.display(Messages.USERID_AND_PASSWORD);
                     bibliotecaView.getStringInput();
                     name = bibliotecaView.getStringInput();
                     librarian.returnMovie(name);
