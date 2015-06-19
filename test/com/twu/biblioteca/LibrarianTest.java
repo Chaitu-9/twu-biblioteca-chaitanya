@@ -151,4 +151,24 @@ import static org.junit.Assert.assertThat;
             assertThat(outContent.toString(),is("Thank you for returning the movie.\n"));
         }
 
+        @Test
+        public void shouldDisplayErrorMessageIfMovieReturnedIsNotValid(){
+            ArrayList<Book> availableBooksList = new ArrayList<Book>();
+            ArrayList<Book> checkedoutBookList = new ArrayList<Book>();
+            ArrayList<Movie> availableMoviesList = new ArrayList<Movie>();
+            ArrayList<Movie> checkedoutMoviesList = new ArrayList<Movie>();
+            BibliotecaView view = new BibliotecaView(null);
+            Library library = new Library(availableBooksList,availableMoviesList,view);
+            Librarian librarian = new Librarian(availableBooksList,checkedoutBookList,library, view, availableMoviesList, null, checkedoutMoviesList);
+
+            availableMoviesList.add(new Movie("Inception",2010,"Nolan", 8.8));
+            availableMoviesList.add(new Movie("Matrix",1990, "Andy", 8.7));
+            checkedoutMoviesList.add(new Movie("Dark Knight",2008 , "Nolan", 9.0));
+
+            librarian.returnMovie("Jurassic Park");
+
+
+            assertThat(outContent.toString(),is("That is not a valid movie to return.\n"));
+        }
+
     }
