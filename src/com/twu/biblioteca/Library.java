@@ -26,9 +26,12 @@ public class Library {
     public void addBook(ArrayList<Book> bookList, Book book ){
         bookList.add(book);
     }
-
     public Book removeBook(ArrayList<Book> bookList, int bookNumber){
         return bookList.remove(bookNumber);
+    }
+
+    public void addMovie(ArrayList<Movie> movieList, Movie movie ){
+        movieList.add(movie);
     }
 
     public Movie removeMovie(ArrayList<Movie> movieList, int movieNumber){

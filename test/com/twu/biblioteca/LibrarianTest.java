@@ -28,7 +28,7 @@ import static org.junit.Assert.assertThat;
         BibliotecaView view = new BibliotecaView(null);
         ArrayList<Book> checkedoutBookList = new ArrayList<Book>();
         Library library = new Library(availableBooksList,availableMoviesList,view);
-        Librarian librarian = new Librarian(availableBooksList,checkedoutBookList,library, view, null, null);
+        Librarian librarian = new Librarian(availableBooksList,checkedoutBookList,library, view, null, null, null);
 
         availableBooksList.add(new Book("Harry Potter", "J.K.Rowling", "1990"));
         availableBooksList.add(new Book("The Hobbit", "Tolkein", "2001"));
@@ -51,7 +51,7 @@ import static org.junit.Assert.assertThat;
             availableBooksList.add(new Book("Hound of Baskervilles", "Doyle", "1902"));
             ArrayList<Movie> availableMoviesList = null;
             Library library = new Library(availableBooksList,availableMoviesList,view);
-            Librarian librarian = new Librarian(availableBooksList,checkedoutBookList,library, view, null, null);
+            Librarian librarian = new Librarian(availableBooksList,checkedoutBookList,library, view, null, null, null);
 
             librarian.checkOutBook("Prince of Persia");
 
@@ -65,7 +65,7 @@ import static org.junit.Assert.assertThat;
             BibliotecaView view = new BibliotecaView(null);
             ArrayList<Book> checkedoutBookList = new ArrayList<Book>();
             Library library = new Library(availableBooksList,null,view);
-            Librarian librarian = new Librarian(availableBooksList,checkedoutBookList,library, view, null, null);
+            Librarian librarian = new Librarian(availableBooksList,checkedoutBookList,library, view, null, null, null);
             availableBooksList.add(new Book("The Hobbit", "Tolkein", "2001"));
             availableBooksList.add(new Book("Hound of Baskervilles", "Doyle", "1902"));
             checkedoutBookList.add(new Book("Harry Potter", "J.K.Rowling", "1990"));
@@ -86,7 +86,7 @@ import static org.junit.Assert.assertThat;
             checkedoutBookList.add(new Book("Harry Potter", "J.K.Rowling", "1990"));
             BibliotecaView view = new BibliotecaView(null);
             Library library = new Library(bookList,null,view);
-            Librarian librarian = new Librarian(bookList,checkedoutBookList,library, view, null, null);
+            Librarian librarian = new Librarian(bookList,checkedoutBookList,library, view, null, null, null);
 
             librarian.returnBook("Prince of Persia");
 
@@ -99,9 +99,10 @@ import static org.junit.Assert.assertThat;
             ArrayList<Book> availableBooksList = new ArrayList<Book>();
             ArrayList<Book> checkedoutBookList = new ArrayList<Book>();
             ArrayList<Movie> availableMoviesList = new ArrayList<Movie>();
+            ArrayList<Movie> checkedoutMoviesList = new ArrayList<Movie>();
             BibliotecaView view = new BibliotecaView(null);
             Library library = new Library(availableBooksList,availableMoviesList,view);
-            Librarian librarian = new Librarian(availableBooksList,checkedoutBookList,library, view, availableMoviesList, null);
+            Librarian librarian = new Librarian(availableBooksList,checkedoutBookList,library, view, availableMoviesList, null, checkedoutMoviesList);
 
             availableMoviesList.add(new Movie("Inception",2010,"Nolan", 8.8));
             availableMoviesList.add(new Movie("Matrix",1990, "Andy", 8.7));
@@ -123,11 +124,31 @@ import static org.junit.Assert.assertThat;
             availableMoviesList.add(new Movie("Matrix",1990, "Andy", 8.7));
             availableMoviesList.add(new Movie("Dark Knight",2008 , "Nolan", 9.0));
             Library library = new Library(availableBooksList,availableMoviesList,view);
-            Librarian librarian = new Librarian(null,null,library, view, availableMoviesList, null);
+            Librarian librarian = new Librarian(null,null,library, view, availableMoviesList, null, null);
 
             librarian.checkOutMovie("Harry Potter");
 
             assertEquals(outContent.toString(), "That movie is not available.\n");
+        }
+
+        @Test
+        public void shouldReturnParticularMovie(){
+            ArrayList<Book> availableBooksList = new ArrayList<Book>();
+            ArrayList<Book> checkedoutBookList = new ArrayList<Book>();
+            ArrayList<Movie> availableMoviesList = new ArrayList<Movie>();
+            ArrayList<Movie> checkedoutMoviesList = new ArrayList<Movie>();
+            BibliotecaView view = new BibliotecaView(null);
+            Library library = new Library(availableBooksList,availableMoviesList,view);
+            Librarian librarian = new Librarian(availableBooksList,checkedoutBookList,library, view, availableMoviesList, null, checkedoutMoviesList);
+
+            availableMoviesList.add(new Movie("Inception",2010,"Nolan", 8.8));
+            availableMoviesList.add(new Movie("Matrix",1990, "Andy", 8.7));
+            checkedoutMoviesList.add(new Movie("Dark Knight",2008 , "Nolan", 9.0));
+
+            librarian.returnMovie("Dark Knight");
+
+
+            assertThat(outContent.toString(),is("Thank you for returning the movie.\n"));
         }
 
     }

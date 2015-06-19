@@ -19,7 +19,7 @@ public class BibliotecaApp {
 
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = new Library(availableBooksList, availableMoviesList, bibliotecaView);
-        Librarian librarian = new Librarian(availableBooksList, checkedoutBooksList, library, bibliotecaView, null, null);
+        Librarian librarian = new Librarian(availableBooksList, checkedoutBooksList, library, bibliotecaView, null, null, null);
         Options options = new Options(library, bibliotecaView, librarian);
         options.start();
         options.selectOption();

@@ -171,7 +171,7 @@ public class OptionsTest {
 
 
     @Test
-    public void shouldExitWhenSixthOptionIsSelected() {
+    public void shouldExitWhenSeventhOptionIsSelected() {
         inContent = new ByteArrayInputStream("7".getBytes());
 
         Scanner input = new Scanner(inContent);
