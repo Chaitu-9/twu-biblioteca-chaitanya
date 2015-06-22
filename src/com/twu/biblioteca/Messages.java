@@ -20,4 +20,5 @@ public interface Messages {
     String USERID_AND_PASSWORD = "Enter User name and Password";
     String INVALID_USERID_OR_PASSWORD = "Invalid User Id or Password";
     String SUCCESSFUL_LOGIN = "Successfully logged in";
+    String USER_DETAILS = "Display User Details";
 }

@@ -7,12 +7,14 @@ public class Options {
     private BibliotecaView bibliotecaView;
     private Librarian librarian;
     private Login login;
+    private User user;
 
-    public Options(Library library, BibliotecaView bibliotecaView, Librarian librarian, Login login) {
+    public Options(Library library, BibliotecaView bibliotecaView, Librarian librarian, Login login, User user) {
         this.library = library;
         this.bibliotecaView = bibliotecaView;
         this.librarian = librarian;
         this.login = login;
+        this.user = user;
     }
 
     public void start(){
@@ -30,7 +32,8 @@ public class Options {
                 "4. " + Messages.LIST_MOVIES +"\n"+
                 "5. " + Messages.CHECKOUT_MOVIE +"\n"+
                 "6. " + Messages.RETURN_MOVIE +"\n"+
-                "7. " + Messages.EXIT + "\n");
+                "7. " + Messages.USER_DETAILS +"\n"+
+                "10. " + Messages.EXIT + "\n");
     }
 
     public void selectOption(){
@@ -49,8 +52,7 @@ public class Options {
                     bibliotecaView.display(Messages.USERID_AND_PASSWORD);
                     userId = bibliotecaView.getStringInput();
                     password = bibliotecaView.getStringInput();
-                    valid = login.validate(userId, password);
-                    if(valid==true) {
+                    if(login.validate(userId, password)) {
                         bibliotecaView.display(Messages.SUCCESSFUL_LOGIN);
                         name = bibliotecaView.getStringInput();
                         librarian.checkOutBook(name);
@@ -58,29 +60,47 @@ public class Options {
                     bibliotecaView.display(Messages.INVALID_USERID_OR_PASSWORD);
                     break;
                 case 3:
+                    bibliotecaView.getStringInput();
                     bibliotecaView.display(Messages.USERID_AND_PASSWORD);
-                    bibliotecaView.getStringInput();
-                    bibliotecaView.getStringInput();
-                    bibliotecaView.getStringInput();
-                    name = bibliotecaView.getStringInput();
-                    librarian.returnBook(name);
+                    userId = bibliotecaView.getStringInput();
+                    password = bibliotecaView.getStringInput();
+                    if(login.validate(userId, password)) {
+                        bibliotecaView.display(Messages.SUCCESSFUL_LOGIN);
+                        name = bibliotecaView.getStringInput();
+                        librarian.returnBook(name);
+                    }else
+                        bibliotecaView.display(Messages.INVALID_USERID_OR_PASSWORD);
                     break;
                 case 4:
                     library.displayAvailableMovies();
                     break;
                 case 5:
-                    bibliotecaView.display(Messages.USERID_AND_PASSWORD);
                     bibliotecaView.getStringInput();
-                    name = bibliotecaView.getStringInput();
-                    librarian.checkOutMovie(name);
+                    bibliotecaView.display(Messages.USERID_AND_PASSWORD);
+                    userId = bibliotecaView.getStringInput();
+                    password = bibliotecaView.getStringInput();
+                    if(login.validate(userId, password)) {
+                        bibliotecaView.display(Messages.SUCCESSFUL_LOGIN);
+                        name = bibliotecaView.getStringInput();
+                        librarian.checkOutMovie(name);
+                    }else
+                        bibliotecaView.display(Messages.INVALID_USERID_OR_PASSWORD);
                     break;
                 case 6:
-                    bibliotecaView.display(Messages.USERID_AND_PASSWORD);
                     bibliotecaView.getStringInput();
-                    name = bibliotecaView.getStringInput();
-                    librarian.returnMovie(name);
+                    bibliotecaView.display(Messages.USERID_AND_PASSWORD);
+                    userId = bibliotecaView.getStringInput();
+                    password = bibliotecaView.getStringInput();
+                    if(login.validate(userId, password)) {
+                        bibliotecaView.display(Messages.SUCCESSFUL_LOGIN);
+                        name = bibliotecaView.getStringInput();
+                        librarian.returnMovie(name);
+                    }else
+                        bibliotecaView.display(Messages.INVALID_USERID_OR_PASSWORD);
                     break;
                 case 7:
+                    user.toString();
+                case 10:
                     return;
                 default:
                     System.out.println("Invalid Option. Enter again : ");

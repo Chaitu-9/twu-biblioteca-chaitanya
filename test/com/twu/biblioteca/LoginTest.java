@@ -19,4 +19,16 @@ public class LoginTest {
 
         assertThat(foo, is(true));
     }
+
+    @Test
+     public void shouldReturnFalseWhenWrongLoginIdAnsPasswordIsEntered(){
+        HashMap<String, String> validation= new HashMap<String, String>();
+        validation.put("ravi","qwerty");
+        validation.put("surya","asdfgh");
+        validation.put("admin","zxcvbn");
+        Login login = new Login(validation);
+        boolean foo =login.validate("ravi","qweoss");
+
+        assertThat(foo, is(false));
+    }
 }

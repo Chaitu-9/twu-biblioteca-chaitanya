@@ -29,7 +29,7 @@ public class BibliotecaApp {
         Librarian librarian = new Librarian(availableBooksList, checkedoutBooksList, library, bibliotecaView, availableMoviesList, null, checkedoutMoviesList);
         Login login = new Login(validation);
 
-        Options options = new Options(library, bibliotecaView, librarian, login);
+        Options options = new Options(library, bibliotecaView, librarian, login, null);
         options.start();
         options.selectOption();
     }
