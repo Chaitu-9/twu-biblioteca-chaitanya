@@ -8,13 +8,15 @@ public class Options {
     private Librarian librarian;
     private Login login;
     private User user;
+    private CheckoutRegister checkoutRegister;
 
-    public Options(Library library, BibliotecaView bibliotecaView, Librarian librarian, Login login, User user) {
+    public Options(Library library, BibliotecaView bibliotecaView, Librarian librarian, Login login, User user, CheckoutRegister checkoutRegister) {
         this.library = library;
         this.bibliotecaView = bibliotecaView;
         this.librarian = librarian;
         this.login = login;
         this.user = user;
+        this.checkoutRegister = checkoutRegister;
     }
 
     public void start(){
@@ -55,6 +57,8 @@ public class Options {
                     if(login.validate(userId, password)) {
                         bibliotecaView.display(Messages.SUCCESSFUL_LOGIN);
                         name = bibliotecaView.getStringInput();
+                        checkoutRegister.checkedOutDetails(userId, name);
+
                         librarian.checkOutBook(name);
                     }else
                     bibliotecaView.display(Messages.INVALID_USERID_OR_PASSWORD);
@@ -67,7 +71,11 @@ public class Options {
                     if(login.validate(userId, password)) {
                         bibliotecaView.display(Messages.SUCCESSFUL_LOGIN);
                         name = bibliotecaView.getStringInput();
-                        librarian.returnBook(name);
+                        if (checkoutRegister.validateReturn(userId, name)) {
+                            librarian.returnBook(name);
+                            checkoutRegister.removeBook(userId, name);
+                        } else
+                            bibliotecaView.display(Messages.UNSUCCESSFUL_RETURN_BOOK);
                     }else
                         bibliotecaView.display(Messages.INVALID_USERID_OR_PASSWORD);
                     break;

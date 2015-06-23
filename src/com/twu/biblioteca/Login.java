@@ -10,6 +10,8 @@ public class Login {
 
     public boolean validate(String userId, String password) {
         String actualPassword =validation.get(userId);
-        return actualPassword.equals(password);
+        if (actualPassword != null)
+            return actualPassword.equals(password);
+        return false;
     }
 }

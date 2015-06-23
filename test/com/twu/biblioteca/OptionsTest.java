@@ -36,7 +36,7 @@ public class OptionsTest {
     @Test
     public void shouldcallWelcomeAndDisplayOptionsMethod(){
         Library library = new Library(null,null, null);
-        Options options = new Options(library, null, null, null, null);
+        Options options = new Options(library, null, null, null, null, null);
 
         options.start();
 
@@ -57,7 +57,7 @@ public class OptionsTest {
     public void shouldPrintWelcomeMessage() {
         ArrayList<Book> booksList = new ArrayList<Book>();
         Library library = new Library(booksList, null, null);
-        Options options = new Options(library, null, null, null, null);
+        Options options = new Options(library, null, null, null, null, null);
 
         String actualMessage = Messages.WELCOME_MESSAGE;
         options.welcome();
@@ -70,7 +70,7 @@ public class OptionsTest {
     public void shouldPrintAvailableOptions(){
         ArrayList<Book> booksList = new ArrayList<Book>();
         Library library = new Library(booksList,null, null);
-        Options options = new Options(library, null, null, null, null);
+        Options options = new Options(library, null, null, null, null, null);
 
         String actualMessage = "\n1. " + Messages.LIST_BOOKS + "\n" +
                 "2. "+ Messages.CHECKOUT_BOOK +"\n" +
@@ -94,7 +94,7 @@ public class OptionsTest {
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = mock(Library.class);
-        Options options = new Options(library,bibliotecaView, null, null, null);
+        Options options = new Options(library,bibliotecaView, null, null, null, null);
 
         options.selectOption();
 
@@ -118,7 +118,7 @@ public class OptionsTest {
         validation.put("surya","asdfgh");
         validation.put("admin","zxcvbn");
         Login login = new Login(validation);
-        Options options = new Options(library,bibliotecaView,librarian, login, null);
+        Options options = new Options(library,bibliotecaView,librarian, login, null, null);
 
         options.selectOption();
         String bookName = "Harry Potter";
@@ -141,7 +141,7 @@ public class OptionsTest {
         validation.put("surya","asdfgh");
         validation.put("admin","zxcvbn");
         Login login = new Login(validation);
-        Options options = new Options(library,bibliotecaView,librarian, login, null);
+        Options options = new Options(library,bibliotecaView,librarian, login, null, null);
 
         options.selectOption();
         String bookName = "Harry Potter";
@@ -157,7 +157,7 @@ public class OptionsTest {
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = mock(Library.class);
-        Options options = new Options(library,bibliotecaView, null, null, null);
+        Options options = new Options(library,bibliotecaView, null, null, null, null);
 
         options.selectOption();
 
@@ -181,7 +181,7 @@ public class OptionsTest {
         validation.put("surya","asdfgh");
         validation.put("admin","zxcvbn");
         Login login = new Login(validation);
-        Options options = new Options(library,bibliotecaView,librarian, login, null);
+        Options options = new Options(library,bibliotecaView,librarian, login, null, null);
 
         options.selectOption();
         String movieName = "Harry Potter";
@@ -204,7 +204,7 @@ public class OptionsTest {
         validation.put("surya","asdfgh");
         validation.put("admin","zxcvbn");
         Login login = new Login(validation);
-        Options options = new Options(library,bibliotecaView,librarian, login, null);
+        Options options = new Options(library,bibliotecaView,librarian, login, null, null);
 
         options.selectOption();
         String movieName = "Harry Potter";
@@ -225,7 +225,7 @@ public class OptionsTest {
         Login login = new Login(validation);
         User user = new User("ravi","ravi123@gmail.com","9876543210");
         Librarian librarian =new Librarian(null,null,null,bibliotecaView,null,null,null);
-        Options options = new Options(null,bibliotecaView,librarian, login, user);
+        Options options = new Options(null,bibliotecaView,librarian, login, user, null);
         String actualValue = user.toString();
         String expectedValue = "name : ravi emailAddress : ravi123@gmail.com phoneNumber : 9876543210";
 
@@ -239,7 +239,7 @@ public class OptionsTest {
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = mock(Library.class);
-        Options options = new Options(library,bibliotecaView, null, null, null);
+        Options options = new Options(library,bibliotecaView, null, null, null, null);
 
         options.selectOption();
         exit.expectSystemExitWithStatus(0);

@@ -1,13 +1,20 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CheckoutRegister {
     private ArrayList<String> register = new ArrayList<String>();
 
-    public void entercheckedOutDetails(String userId ,String bookName){
-       register.add(userId + " " + bookName);
+    public void checkedOutDetails(String userId, String name){
+        register.add(userId + " " + name);
+    }
+
+    public boolean validateReturn(String userId, String name){
+        return register.contains(userId +" "+ name);
+    }
+
+    public void removeBook(String userId, String name) {
+        register.remove(userId + " " + name);
     }
 
     @Override

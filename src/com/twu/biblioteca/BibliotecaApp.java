@@ -28,8 +28,9 @@ public class BibliotecaApp {
         Library library = new Library(availableBooksList, availableMoviesList, bibliotecaView);
         Librarian librarian = new Librarian(availableBooksList, checkedoutBooksList, library, bibliotecaView, availableMoviesList, null, checkedoutMoviesList);
         Login login = new Login(validation);
+        CheckoutRegister checkoutRegister = new CheckoutRegister();
 
-        Options options = new Options(library, bibliotecaView, librarian, login, null);
+        Options options = new Options(library, bibliotecaView, librarian, login, null, checkoutRegister);
         options.start();
         options.selectOption();
     }
