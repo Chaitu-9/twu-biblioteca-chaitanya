@@ -36,15 +36,15 @@ public class Options {
                 "6. " + Messages.RETURN_MOVIE +"\n"+
                 "7. " + Messages.USER_DETAILS +"\n"+
                 "8. " + Messages.CHECKOUT_HISTORY +"\n"+
-                "10. " + Messages.EXIT + "\n");
+                "9. " + Messages.EXIT + "\n");
     }
 
     public void selectOption(){
         int option;
         String name, userId, password;
-        boolean valid;
 
         do {
+            bibliotecaView.display(Messages.ENTER_OPTION);
             option = bibliotecaView.getIntegerInput();
             switch (option) {
                 case 1:
@@ -57,6 +57,7 @@ public class Options {
                     password = bibliotecaView.getStringInput();
                     if(login.validate(userId, password)) {
                         bibliotecaView.display(Messages.SUCCESSFUL_LOGIN);
+                        bibliotecaView.display(Messages.BOOK_NAME);
                         name = bibliotecaView.getStringInput();
                         checkoutRegister.checkedOutDetails(userId, name);
                         librarian.checkOutBook(name);
@@ -70,6 +71,7 @@ public class Options {
                     password = bibliotecaView.getStringInput();
                     if(login.validate(userId, password)) {
                         bibliotecaView.display(Messages.SUCCESSFUL_LOGIN);
+                        bibliotecaView.display(Messages.BOOK_NAME);
                         name = bibliotecaView.getStringInput();
                         if (checkoutRegister.validateReturn(userId, name)) {
                             librarian.returnBook(name);
@@ -89,6 +91,7 @@ public class Options {
                     password = bibliotecaView.getStringInput();
                     if(login.validate(userId, password)) {
                         bibliotecaView.display(Messages.SUCCESSFUL_LOGIN);
+                        bibliotecaView.display(Messages.MOVIE_NAME);
                         name = bibliotecaView.getStringInput();
                         librarian.checkOutMovie(name);
                     }else
@@ -101,6 +104,7 @@ public class Options {
                     password = bibliotecaView.getStringInput();
                     if(login.validate(userId, password)) {
                         bibliotecaView.display(Messages.SUCCESSFUL_LOGIN);
+                        bibliotecaView.display(Messages.MOVIE_NAME);
                         name = bibliotecaView.getStringInput();
                         if (checkoutRegister.validateReturn(userId, name)) {
                             librarian.returnMovie(name);
@@ -136,7 +140,7 @@ public class Options {
                         bibliotecaView.display(Messages.INVALID_USERID_OR_PASSWORD);
                     }
                     break;
-                case 10:
+                case 9:
                     return;
                 default:
                     System.out.println("Invalid Option. Enter again : ");

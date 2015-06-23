@@ -48,7 +48,7 @@ public class OptionsTest {
                 "6. " + Messages.RETURN_MOVIE +"\n"+
                 "7. " + Messages.USER_DETAILS +"\n"+
                 "8. " + Messages.CHECKOUT_HISTORY +"\n"+
-                "10. " + Messages.EXIT + "\n";
+                "9. " + Messages.EXIT + "\n";
         String expectedMessage = outContent.toString();
 
         assertThat(actualMessage, is(expectedMessage));
@@ -81,7 +81,7 @@ public class OptionsTest {
                 "6. " + Messages.RETURN_MOVIE +"\n"+
                 "7. " + Messages.USER_DETAILS +"\n"+
                 "8. " + Messages.CHECKOUT_HISTORY +"\n"+
-                "10. " + Messages.EXIT + "\n";
+                "9. " + Messages.EXIT + "\n";
         options.displayOptions();
         String expectedMessage = outContent.toString();
 
@@ -90,7 +90,7 @@ public class OptionsTest {
 
     @Test
     public void shouldDisplayAvailableBooksWhenFirstOptionIsSelected(){
-        inContent = new ByteArrayInputStream("1\n10".getBytes());
+        inContent = new ByteArrayInputStream("1\n9".getBytes());
 
         ArrayList<Book> booksList = new ArrayList<Book>();
         Scanner input = new Scanner(inContent);
@@ -107,7 +107,7 @@ public class OptionsTest {
 
     @Test
     public void shouldCallCheckOutFunctionWhenSecondOptionIsSelected(){
-        inContent = new ByteArrayInputStream("2\nravi\nqwerty\nHarry Potter\n10".getBytes());
+        inContent = new ByteArrayInputStream("2\nravi\nqwerty\nHarry Potter\n9".getBytes());
 
         ArrayList<Book> availableBooksList = new ArrayList<Book>();
         ArrayList<Movie> checkedoutBooksList = new ArrayList<Movie>();
@@ -118,7 +118,7 @@ public class OptionsTest {
         HashMap<String,String> validation = new HashMap<String, String>();
         validation.put("ravi","qwerty");
         HashMap<String,User> userRegister = new HashMap<String, User>();
-        userRegister.put("ravi",new User("ravi","ravi123@gmail.com","9876543210"));
+        userRegister.put("ravi",new User("ravi","ravi123@gmail.com","987654329"));
         userRegister.put("surya",new User("surya","surya123@gmail.com","8971821321"));
         userRegister.put("admin",new User("admin","admin123@gmail.com","9878721827"));
         Login login = new Login(validation,userRegister);
@@ -134,7 +134,7 @@ public class OptionsTest {
 
     @Test
     public void shouldCallReturnBookFunctionWhenThirdOptionIsSelected(){
-        inContent = new ByteArrayInputStream("3\nravi\nqwerty\nHarry Potter\n10".getBytes());
+        inContent = new ByteArrayInputStream("3\nravi\nqwerty\nHarry Potter\n9".getBytes());
 
         ArrayList<Book> availableBooksList = new ArrayList<Book>();
         ArrayList<Movie> checkedoutBooksList = new ArrayList<Movie>();
@@ -161,7 +161,7 @@ public class OptionsTest {
 
     @Test
     public void shouldDisplayAvailableMoviesWhenFourthOptionIsSelected(){
-        inContent = new ByteArrayInputStream("4\n10".getBytes());
+        inContent = new ByteArrayInputStream("4\n9".getBytes());
 
         ArrayList<Book> booksList = new ArrayList<Book>();
         Scanner input = new Scanner(inContent);
@@ -178,7 +178,7 @@ public class OptionsTest {
 
     @Test
     public void shouldCallCheckOutMovieFunctionWhenFifthOptionIsSelected(){
-        inContent = new ByteArrayInputStream("5\nravi\nqwerty\nHarry Potter\n10".getBytes());
+        inContent = new ByteArrayInputStream("5\nravi\nqwerty\nHarry Potter\n9".getBytes());
 
         ArrayList<Book> availableBooksList = new ArrayList<Book>();
         ArrayList<Movie> checkedoutBooksList = new ArrayList<Movie>();
@@ -205,7 +205,7 @@ public class OptionsTest {
 
     @Test
     public void shouldCallReturnMovieFunctionWhenSixthOptionIsSelected(){
-        inContent = new ByteArrayInputStream("6\nravi\nqwerty\nHarry Potter\n10".getBytes());
+        inContent = new ByteArrayInputStream("6\nravi\nqwerty\nHarry Potter\n9".getBytes());
 
         ArrayList<Book> availableBooksList = new ArrayList<Book>();
         ArrayList<Movie> checkedoutBooksList = new ArrayList<Movie>();
@@ -216,7 +216,7 @@ public class OptionsTest {
         HashMap<String,String> validation = new HashMap<String, String>();
         validation.put("ravi","qwerty");
         HashMap<String,User> userRegister = new HashMap<String, User>();
-        userRegister.put("ravi",new User("ravi","ravi123@gmail.com","9876543210"));
+        userRegister.put("ravi",new User("ravi","ravi123@gmail.com","987654329"));
         userRegister.put("surya",new User("surya","surya123@gmail.com","8971821321"));
         userRegister.put("admin",new User("admin","admin123@gmail.com","9878721827"));
         Login login = new Login(validation,userRegister);
@@ -232,7 +232,7 @@ public class OptionsTest {
 
     @Test
     public void shouldCallUserDetailsFunctionWhenSeventhOptionIsSelected(){
-        inContent = new ByteArrayInputStream("7\n10".getBytes());
+        inContent = new ByteArrayInputStream("7\n9".getBytes());
 
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);
@@ -241,18 +241,18 @@ public class OptionsTest {
         validation.put("surya","asdfgh");
         validation.put("admin","zxcvbn");
         Login login = new Login(validation, null);
-        User user = new User("ravi","ravi123@gmail.com","9876543210");
+        User user = new User("ravi","ravi123@gmail.com","987654329");
         Librarian librarian =new Librarian(null,null,null,bibliotecaView,null,null,null);
         Options options = new Options(null,bibliotecaView,librarian, login, user, null);
         String actualValue = user.toString();
-        String expectedValue = "name : ravi\n emailAddress : ravi123@gmail.com\n phoneNumber : 9876543210";
+        String expectedValue = "name : ravi\n emailAddress : ravi123@gmail.com\n phoneNumber : 987654329";
 
         assertThat(actualValue, is(expectedValue));
     }
 
     @Test
     public void shouldExitWhenTenthOptionIsSelected() {
-        inContent = new ByteArrayInputStream("10".getBytes());
+        inContent = new ByteArrayInputStream("9".getBytes());
 
         Scanner input = new Scanner(inContent);
         BibliotecaView bibliotecaView = new BibliotecaView(input);

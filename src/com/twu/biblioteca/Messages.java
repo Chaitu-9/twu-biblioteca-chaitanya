@@ -3,7 +3,7 @@ package com.twu.biblioteca;
 public interface Messages {
     String WELCOME_MESSAGE = "Welcome to Bengaluru public Library...";
     String LIST_BOOKS = "List Books";
-    String LIST_MOVIES = "List Books";
+    String LIST_MOVIES = "List Movies";
     String EXIT = "Exit";
     String CHECKOUT_BOOK = "Checkout Book";
     String CHECKOUT_MOVIE = "Checkout Movie";
@@ -22,4 +22,7 @@ public interface Messages {
     String SUCCESSFUL_LOGIN = "Successfully logged in";
     String USER_DETAILS = "Display User Details";
     String CHECKOUT_HISTORY = "Checkout History";
+    String ENTER_OPTION = "Enter Option : ";
+    String BOOK_NAME ="Enter book name : ";
+    String MOVIE_NAME = "Enter movie name";
 }
