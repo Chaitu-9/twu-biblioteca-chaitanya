@@ -14,7 +14,9 @@ public class LoginTest {
         validation.put("ravi","qwerty");
         validation.put("surya","asdfgh");
         validation.put("admin","zxcvbn");
-        Login login = new Login(validation);
+        HashMap<String,User> userRegister = new HashMap<String, User>();
+        userRegister.put("ravi",new User("ravi","ravi123@gmail.com","9876543210"));
+        Login login = new Login(validation, userRegister);
         boolean foo =login.validate("ravi","qwerty");
 
         assertThat(foo, is(true));
@@ -26,7 +28,7 @@ public class LoginTest {
         validation.put("ravi","qwerty");
         validation.put("surya","asdfgh");
         validation.put("admin","zxcvbn");
-        Login login = new Login(validation);
+        Login login = new Login(validation, null);
         boolean foo =login.validate("ravi","qweoss");
 
         assertThat(foo, is(false));

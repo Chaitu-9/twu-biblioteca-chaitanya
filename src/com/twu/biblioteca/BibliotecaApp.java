@@ -24,10 +24,15 @@ public class BibliotecaApp {
         validation.put("surya","asdfgh");
         validation.put("admin","zxcvbn");
 
+        HashMap<String,User> userRegister = new HashMap<String, User>();
+        userRegister.put("ravi",new User("ravi","ravi123@gmail.com","9876543210"));
+        userRegister.put("surya",new User("surya","surya123@gmail.com","8971821321"));
+        userRegister.put("admin",new User("admin","admin123@gmail.com","9878721827"));
+
         BibliotecaView bibliotecaView = new BibliotecaView(input);
         Library library = new Library(availableBooksList, availableMoviesList, bibliotecaView);
         Librarian librarian = new Librarian(availableBooksList, checkedoutBooksList, library, bibliotecaView, availableMoviesList, null, checkedoutMoviesList);
-        Login login = new Login(validation);
+        Login login = new Login(validation, userRegister);
         CheckoutRegister checkoutRegister = new CheckoutRegister();
 
         Options options = new Options(library, bibliotecaView, librarian, login, null, checkoutRegister);

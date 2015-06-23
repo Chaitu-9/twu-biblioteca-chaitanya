@@ -10,6 +10,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "name : " + name + " emailAddress : " + emailAddress + " phoneNumber : " + phoneNumber ;
+        return "name : " + name + "\n emailAddress : " + emailAddress + "\n phoneNumber : " + phoneNumber ;
     }
 }

@@ -35,6 +35,7 @@ public class Options {
                 "5. " + Messages.CHECKOUT_MOVIE +"\n"+
                 "6. " + Messages.RETURN_MOVIE +"\n"+
                 "7. " + Messages.USER_DETAILS +"\n"+
+                "8. " + Messages.CHECKOUT_HISTORY +"\n"+
                 "10. " + Messages.EXIT + "\n");
     }
 
@@ -58,7 +59,6 @@ public class Options {
                         bibliotecaView.display(Messages.SUCCESSFUL_LOGIN);
                         name = bibliotecaView.getStringInput();
                         checkoutRegister.checkedOutDetails(userId, name);
-
                         librarian.checkOutBook(name);
                     }else
                     bibliotecaView.display(Messages.INVALID_USERID_OR_PASSWORD);
@@ -102,12 +102,40 @@ public class Options {
                     if(login.validate(userId, password)) {
                         bibliotecaView.display(Messages.SUCCESSFUL_LOGIN);
                         name = bibliotecaView.getStringInput();
-                        librarian.returnMovie(name);
+                        if (checkoutRegister.validateReturn(userId, name)) {
+                            librarian.returnMovie(name);
+                            checkoutRegister.removeBook(userId, name);
+                            }
+                        else
+                            bibliotecaView.display(Messages.UNSUCCESSFUL_RETURN_BOOK);
                     }else
                         bibliotecaView.display(Messages.INVALID_USERID_OR_PASSWORD);
                     break;
                 case 7:
-                    user.toString();
+                    bibliotecaView.getStringInput();
+                    bibliotecaView.display(Messages.USERID_AND_PASSWORD);
+                    userId = bibliotecaView.getStringInput();
+                    password = bibliotecaView.getStringInput();
+                    if(login.validate(userId, password)) {
+                        bibliotecaView.display(Messages.SUCCESSFUL_LOGIN);
+                        bibliotecaView.display(login.currentUserDetails());
+                    }
+                    else
+                        bibliotecaView.display(Messages.INVALID_USERID_OR_PASSWORD);
+                    break;
+                case 8:
+                    bibliotecaView.getStringInput();
+                    bibliotecaView.display(Messages.USERID_AND_PASSWORD);
+                    userId = bibliotecaView.getStringInput();
+                    password = bibliotecaView.getStringInput();
+                    if(login.validate(userId, password) && userId.equals("admin")) {
+                        bibliotecaView.display(Messages.SUCCESSFUL_LOGIN);
+                        bibliotecaView.display(checkoutRegister.toString());
+                    }
+                    else {
+                        bibliotecaView.display(Messages.INVALID_USERID_OR_PASSWORD);
+                    }
+                    break;
                 case 10:
                     return;
                 default:

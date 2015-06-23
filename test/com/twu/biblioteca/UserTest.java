@@ -11,7 +11,7 @@ public class UserTest {
     public void shouldBeAbleToReturnUserDetails() {
      User user = new User("ravi","ravichandra","9876543210");
 
-     String expectedValue = "name : ravi emailAddress : ravichandra phoneNumber : 9876543210";
+     String expectedValue = "name : ravi\n emailAddress : ravichandra\n phoneNumber : 9876543210";
 
      assertThat(user.toString(),is(expectedValue));
     }

@@ -23,6 +23,7 @@ public class CheckoutRegisterTest {
         cr.checkedOutDetails("surya", "Hound of baskervilles");
         cr.checkedOutDetails("hari", "Harry Potter");
         cr.validateReturn("hari", "Harry Potter");
+        cr.removeBook("hari","Harry Potter");
         String actualValue = cr.toString();
 
         assertThat(actualValue, is("surya Hound of baskervilles\n"));

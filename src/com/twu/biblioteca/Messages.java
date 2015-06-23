@@ -21,4 +21,5 @@ public interface Messages {
     String INVALID_USERID_OR_PASSWORD = "Invalid User Id or Password";
     String SUCCESSFUL_LOGIN = "Successfully logged in";
     String USER_DETAILS = "Display User Details";
+    String CHECKOUT_HISTORY = "Checkout History";
 }

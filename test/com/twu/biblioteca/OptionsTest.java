@@ -47,6 +47,7 @@ public class OptionsTest {
                 "5. " + Messages.CHECKOUT_MOVIE +"\n"+
                 "6. " + Messages.RETURN_MOVIE +"\n"+
                 "7. " + Messages.USER_DETAILS +"\n"+
+                "8. " + Messages.CHECKOUT_HISTORY +"\n"+
                 "10. " + Messages.EXIT + "\n";
         String expectedMessage = outContent.toString();
 
@@ -79,6 +80,7 @@ public class OptionsTest {
                 "5. " + Messages.CHECKOUT_MOVIE +"\n"+
                 "6. " + Messages.RETURN_MOVIE +"\n"+
                 "7. " + Messages.USER_DETAILS +"\n"+
+                "8. " + Messages.CHECKOUT_HISTORY +"\n"+
                 "10. " + Messages.EXIT + "\n";
         options.displayOptions();
         String expectedMessage = outContent.toString();
@@ -115,10 +117,14 @@ public class OptionsTest {
         Librarian librarian =mock(Librarian.class);
         HashMap<String,String> validation = new HashMap<String, String>();
         validation.put("ravi","qwerty");
-        validation.put("surya","asdfgh");
-        validation.put("admin","zxcvbn");
-        Login login = new Login(validation);
-        Options options = new Options(library,bibliotecaView,librarian, login, null, null);
+        HashMap<String,User> userRegister = new HashMap<String, User>();
+        userRegister.put("ravi",new User("ravi","ravi123@gmail.com","9876543210"));
+        userRegister.put("surya",new User("surya","surya123@gmail.com","8971821321"));
+        userRegister.put("admin",new User("admin","admin123@gmail.com","9878721827"));
+        Login login = new Login(validation,userRegister);
+        CheckoutRegister checkoutRegister = new CheckoutRegister();
+        checkoutRegister.checkedOutDetails("ravi","Harry Potter");
+        Options options = new Options(library,bibliotecaView,librarian, login, null, checkoutRegister);
 
         options.selectOption();
         String bookName = "Harry Potter";
@@ -138,10 +144,14 @@ public class OptionsTest {
         Librarian librarian =mock(Librarian.class);
         HashMap<String,String> validation = new HashMap<String, String>();
         validation.put("ravi","qwerty");
-        validation.put("surya","asdfgh");
-        validation.put("admin","zxcvbn");
-        Login login = new Login(validation);
-        Options options = new Options(library,bibliotecaView,librarian, login, null, null);
+        HashMap<String,User> userRegister = new HashMap<String, User>();
+        userRegister.put("ravi",new User("ravi","ravi123@gmail.com","9876543210"));
+        userRegister.put("surya",new User("surya","surya123@gmail.com","8971821321"));
+        userRegister.put("admin",new User("admin","admin123@gmail.com","9878721827"));
+        Login login = new Login(validation,userRegister);
+        CheckoutRegister checkoutRegister = new CheckoutRegister();
+        checkoutRegister.checkedOutDetails("ravi","Harry Potter");
+        Options options = new Options(library,bibliotecaView,librarian, login, null, checkoutRegister);
 
         options.selectOption();
         String bookName = "Harry Potter";
@@ -178,10 +188,14 @@ public class OptionsTest {
         Librarian librarian =mock(Librarian.class);
         HashMap<String,String> validation = new HashMap<String, String>();
         validation.put("ravi","qwerty");
-        validation.put("surya","asdfgh");
-        validation.put("admin","zxcvbn");
-        Login login = new Login(validation);
-        Options options = new Options(library,bibliotecaView,librarian, login, null, null);
+        HashMap<String,User> userRegister = new HashMap<String, User>();
+        userRegister.put("ravi",new User("ravi","ravi123@gmail.com","9876543210"));
+        userRegister.put("surya",new User("surya","surya123@gmail.com","8971821321"));
+        userRegister.put("admin",new User("admin","admin123@gmail.com","9878721827"));
+        Login login = new Login(validation,userRegister);
+        CheckoutRegister checkoutRegister = new CheckoutRegister();
+        checkoutRegister.checkedOutDetails("ravi","Harry Potter");
+        Options options = new Options(library,bibliotecaView,librarian, login, null, checkoutRegister);
 
         options.selectOption();
         String movieName = "Harry Potter";
@@ -201,10 +215,14 @@ public class OptionsTest {
         Librarian librarian =mock(Librarian.class);
         HashMap<String,String> validation = new HashMap<String, String>();
         validation.put("ravi","qwerty");
-        validation.put("surya","asdfgh");
-        validation.put("admin","zxcvbn");
-        Login login = new Login(validation);
-        Options options = new Options(library,bibliotecaView,librarian, login, null, null);
+        HashMap<String,User> userRegister = new HashMap<String, User>();
+        userRegister.put("ravi",new User("ravi","ravi123@gmail.com","9876543210"));
+        userRegister.put("surya",new User("surya","surya123@gmail.com","8971821321"));
+        userRegister.put("admin",new User("admin","admin123@gmail.com","9878721827"));
+        Login login = new Login(validation,userRegister);
+        CheckoutRegister checkoutRegister = new CheckoutRegister();
+        checkoutRegister.checkedOutDetails("ravi","Harry Potter");
+        Options options = new Options(library,bibliotecaView,librarian, login, null, checkoutRegister);
 
         options.selectOption();
         String movieName = "Harry Potter";
@@ -222,12 +240,12 @@ public class OptionsTest {
         validation.put("ravi","qwerty");
         validation.put("surya","asdfgh");
         validation.put("admin","zxcvbn");
-        Login login = new Login(validation);
+        Login login = new Login(validation, null);
         User user = new User("ravi","ravi123@gmail.com","9876543210");
         Librarian librarian =new Librarian(null,null,null,bibliotecaView,null,null,null);
         Options options = new Options(null,bibliotecaView,librarian, login, user, null);
         String actualValue = user.toString();
-        String expectedValue = "name : ravi emailAddress : ravi123@gmail.com phoneNumber : 9876543210";
+        String expectedValue = "name : ravi\n emailAddress : ravi123@gmail.com\n phoneNumber : 9876543210";
 
         assertThat(actualValue, is(expectedValue));
     }
